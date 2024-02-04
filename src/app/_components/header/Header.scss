@@ -1,0 +1,71 @@
+@import "../../variables.modules.scss";
+
+.header {
+  width: 100%;
+  // border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: sticky;
+  top: 0;
+
+  ::after {
+    content: "";
+    position: absolute;
+    inset: -2rem;
+    height: 108px;
+    z-index: -1;
+    background-color: #22222298;
+    overflow: hidden;
+  }
+
+  @media (max-width: $md) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+
+    ::after {
+      height: 160px;
+      right: -1rem;
+      left: -1rem;
+    }
+  }
+
+  @supports (
+    (-webkit-backdrop-filter: none) or
+      (backdrop-filter: none)
+  ) {
+    ::after {
+      -webkit-backdrop-filter: blur(1em);
+      backdrop-filter: blur(1em);
+    }
+  }
+}
+
+.heading {
+  font-size: 40px;
+  font-weight: 700;
+
+  @media (max-width: $md) {
+    font-size: 33px;
+    font-weight: 700;
+  }
+}
+
+.search-input {
+  border-radius: 40px;
+  padding-inline: 1.5rem;
+  background-color: $light-color;
+  min-width: 24rem;
+  height: 3.25rem;
+
+  :focus-visible {
+    outline: 1px solid $accent-color;
+  }
+
+  @media (max-width: $md) {
+    width: 100%;
+    margin-block: 0.625rem 1.25rem;
+  }
+}

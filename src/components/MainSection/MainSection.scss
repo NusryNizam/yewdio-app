@@ -1,0 +1,19 @@
+@import "/src/app/variables.modules.scss";
+
+// .main-section {
+//   background-color: $element-bg;
+//   width: 100%;
+//   // min-height: 100vh;
+//   border-radius: $border-radius;
+//   border: 1px solid red;
+// }
+
+.subtitle {
+  margin-bottom: 0.75rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

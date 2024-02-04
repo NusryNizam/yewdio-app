@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "/src/app/variables.modules.scss";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.font {
+  &-sm {
+    &-rg {
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    &-md {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+
+  &-body {
+    &-rg {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &-md {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &-sm-rg {
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    &-sm-md {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    &-lg-rg {
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    &-lg-md {
+      font-size: 19px;
+      font-weight: 500;
+    }
+  }
+
+  &-h1 {
+    font-size: 33px;
+    font-weight: 700;
+  }
+
+  &-h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  &-h3 {
+    font-size: 23px;
+    font-weight: 700;
+  }
+
+  &-display1 {
+    font-size: 57px;
+    font-weight: 700;
+  }
+
+  &-display2 {
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  &-display3 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}

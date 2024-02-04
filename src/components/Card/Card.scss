@@ -1,0 +1,26 @@
+@import "../../app/variables.modules.scss";
+
+.card {
+  border-radius: $card-radius;
+  //   aspect-ratio: 1.2;
+  background-color: $card-color;
+  min-width: 180px;
+  padding: 0.625rem;
+
+  &-title {
+    text-align: left;
+    margin-block: 0.625rem;
+    // display: --webkit-box;
+    // --webkit-line-clamp: 2;
+    // line-clamp: 2;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    max-width: 160px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

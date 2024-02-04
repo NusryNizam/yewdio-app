@@ -1,0 +1,55 @@
+@import "./variables.modules.scss";
+
+.main {
+  display: flex;
+  gap: $gap-1;
+  padding: $gap-1;
+
+  @media (max-width: $lg) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr $nav-height;
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
+.main-section {
+  background-color: $element-bg;
+  width: 100%;
+  border-radius: $border-radius $border-radius 0 0;
+  padding: 2rem;
+  max-height: calc(100vh - (2 * $gap-1) - $player-height);
+  // border: 1px solid yellow;
+  overflow-y: auto;
+
+  @media (max-width: $lg) {
+    grid-row: 1/2;
+    max-height: calc(
+      100vh - (2 * $gap-1) - $player-height - $nav-height -
+        1rem
+    );
+  }
+
+  @media (max-width: $md) {
+    padding: 1.25rem;
+  }
+}
+
+.right-content {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr $player-height;
+}
+
+.children {
+  grid-row: 1/2;
+
+  > * {
+    height: 100%;
+  }
+}
+
+.player {
+  grid-row: 2/3;
+}
