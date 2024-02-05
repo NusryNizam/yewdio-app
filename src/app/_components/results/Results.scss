@@ -1,0 +1,16 @@
+.results-container {
+  position: absolute;
+  top: 4.25rem;
+  right: 0;
+  border-radius: 1rem;
+  min-height: 500px;
+  min-width: 24rem;
+  background-color: black;
+  animation: appear 350ms ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    min-height: 0;
+  }
+}

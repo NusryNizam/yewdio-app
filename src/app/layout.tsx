@@ -4,6 +4,7 @@ import "./main.scss";
 import { inter } from "@/utils/fonts";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Player from "./_components/player/Player";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Yewdio",
@@ -20,10 +21,12 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <main className="main">
           <Sidebar />
-          <div className="right-content">
-            <div className="children">{children}</div>
-            <Player />
-          </div>
+          <StoreProvider>
+            <div className="right-content">
+              <div className="children">{children}</div>
+              <Player />
+            </div>
+          </StoreProvider>
         </main>
       </body>
     </html>
