@@ -22,8 +22,6 @@ const Results = () => {
   const dispatch = useAppDispatch();
 
   const hideOverlay = () => {
-    console.log("click hide");
-
     dispatch(setIsSearchOverlay(false));
   };
 

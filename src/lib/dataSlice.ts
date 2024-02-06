@@ -27,7 +27,6 @@ export const searchAudio = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.log("ERROR");
       throw Error("Error");
     }
   },
