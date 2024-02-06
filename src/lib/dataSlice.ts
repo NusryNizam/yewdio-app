@@ -1,14 +1,19 @@
-import { ISearchResponseDTO } from "@/types/api.types";
+import {
+  IAudioDetailsResponseDTO,
+  ISearchResponseDTO,
+} from "@/types/api.types";
 import { IResults } from "@/types/data.types";
 import {
   PayloadAction,
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import axios from "axios";
+import { AxiosResponse } from "axios";
+import { api } from "./api";
 
 const initialState: IResults = {
   isSearchingAudio: false,
+  isGettingAudioDetails: false,
   isSearchOverlay: false,
 };
 
@@ -16,9 +21,7 @@ export const searchAudio = createAsyncThunk(
   "data/search-audio",
   async (searchTerm: string) => {
     try {
-      const response = await axios.get<
-        ISearchResponseDTO[]
-      >(
+      const response = await api.get<ISearchResponseDTO[]>(
         `https://invidious.fdn.fr/api/v1/search?q=${searchTerm}`,
       );
 
@@ -26,6 +29,44 @@ export const searchAudio = createAsyncThunk(
     } catch (error) {
       console.log("ERROR");
       throw Error("Error");
+    }
+  },
+);
+
+export const getAudioDetails = createAsyncThunk(
+  "data/get-audio-details",
+  async (vidId: string) => {
+    try {
+      const response: AxiosResponse<IAudioDetailsResponseDTO> =
+        await api.get<IAudioDetailsResponseDTO>(
+          `https://invidious.fdn.fr/api/v1/videos/${vidId}`,
+        );
+
+      const {
+        title,
+        videoId,
+        videoThumbnails,
+        genre,
+        author,
+        authorId,
+        lengthSeconds,
+        adaptiveFormats,
+        recommendedVideos,
+      } = response.data;
+
+      return {
+        title,
+        videoId,
+        videoThumbnails,
+        genre,
+        author,
+        authorId,
+        lengthSeconds,
+        adaptiveFormats,
+        recommendedVideos,
+      };
+    } catch (error) {
+      throw new Error("Error");
     }
   },
 );
@@ -52,8 +93,22 @@ const dataSlice = createSlice({
       .addCase(searchAudio.fulfilled, (state, action) => {
         state.isSearchingAudio = false;
         state.results = action.payload;
-        console.log(action.payload);
       });
+
+    builder
+      .addCase(getAudioDetails.pending, (state) => {
+        state.isGettingAudioDetails = true;
+      })
+      .addCase(getAudioDetails.rejected, (state) => {
+        state.isGettingAudioDetails = false;
+      })
+      .addCase(
+        getAudioDetails.fulfilled,
+        (state, action) => {
+          state.isGettingAudioDetails = false;
+          state.selectedAudio = action.payload;
+        },
+      );
   },
 });
 

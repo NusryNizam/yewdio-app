@@ -21,7 +21,7 @@
   padding: 2rem;
   max-height: calc(100vh - (2 * $gap-1) - $player-height);
   // border: 1px solid yellow;
-  overflow-y: auto;
+  overflow: hidden auto;
 
   @media (max-width: $lg) {
     grid-row: 1/2;

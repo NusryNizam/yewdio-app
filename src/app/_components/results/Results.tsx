@@ -1,4 +1,7 @@
-import { setIsSearchOverlay } from "@/lib/dataSlice";
+import {
+  getAudioDetails,
+  setIsSearchOverlay,
+} from "@/lib/dataSlice";
 import {
   useAppDispatch,
   useAppSelector,
@@ -7,6 +10,8 @@ import {
   AUDIO_TYPES,
   THUMBNAIL_QUALITY,
 } from "@/types/api.types";
+import { debounce } from "lodash";
+import { useEffect, useRef } from "react";
 import ResultsCard from "../results-card/ResultsCard";
 import "./Results.scss";
 
@@ -23,8 +28,23 @@ const Results = () => {
   };
 
   const playAudio = (videoId: string) => {
-    // TODO: Logic
+    dispatch(setIsSearchOverlay(false));
+    debouncedGetDetails(videoId);
   };
+
+  const debouncedGetDetails = useRef(
+    debounce(
+      (videoId) => {
+        dispatch(getAudioDetails(videoId));
+      },
+      400,
+      { leading: true, trailing: false },
+    ),
+  ).current;
+
+  useEffect(() => {
+    return () => debouncedGetDetails.cancel();
+  }, [debouncedGetDetails]);
 
   if (isSearchingAudio)
     return (

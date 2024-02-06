@@ -43,3 +43,39 @@ export enum THUMBNAIL_QUALITY {
   MIDDLE = "middle", // 120x90
   END = "end", // 120x90
 }
+
+export interface IAudioDetailsResponseDTO {
+  title: string;
+  videoId: string;
+  videoThumbnails: IVideoThumbs[];
+  genre: string;
+  author: string;
+  authorId: string;
+  lengthSeconds: number;
+  adaptiveFormats: IAdaptiveFormat[];
+  recommendedVideos: IRecommendedVideo[];
+}
+
+interface IAdaptiveFormat {
+  index: string;
+  bitrate: string;
+  init: string;
+  url: string;
+  itag: string;
+  type: string;
+  clen: string;
+  lmt: string;
+  projectionType: number;
+  container: string;
+  encoding: string;
+  qualityLabel: string;
+  resolution: string;
+}
+
+interface IRecommendedVideo {
+  videoId: string;
+  title: string;
+  videoThumbnails: IVideoThumbs[];
+  author: string;
+  lengthSeconds: number;
+}
