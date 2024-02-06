@@ -22,6 +22,10 @@ const Results = () => {
     dispatch(setIsSearchOverlay(false));
   };
 
+  const playAudio = (videoId: string) => {
+    // TODO: Logic
+  };
+
   if (isSearchingAudio)
     return (
       <>
@@ -34,9 +38,7 @@ const Results = () => {
           <div
             className="search-overlay"
             onClick={hideOverlay}
-          >
-            testing
-          </div>
+          ></div>
         ) : null}
       </>
     );
@@ -58,8 +60,8 @@ const Results = () => {
                 }) => (
                   <ResultsCard
                     key={videoId}
+                    onClick={() => playAudio(videoId)}
                     title={title}
-                    videoId={videoId}
                     author={author}
                     duration={lengthSeconds}
                     thumbnailUrl={
@@ -85,9 +87,7 @@ const Results = () => {
         <div
           className="search-overlay"
           onClick={hideOverlay}
-        >
-          testing
-        </div>
+        ></div>
       ) : null}
     </>
   );

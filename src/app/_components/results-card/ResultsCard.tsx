@@ -5,21 +5,26 @@ import "./ResultsCard.scss";
 
 type ResultsCardProp = {
   title: string;
-  videoId: string;
   duration: number;
   author: string;
   thumbnailUrl: string;
+  onClick: () => void;
 };
 
 const ResultsCard = ({
   title,
-  videoId,
   duration,
   author,
   thumbnailUrl,
+  onClick,
 }: ResultsCardProp) => {
   return (
-    <li className="result-card" role="button" tabIndex={0}>
+    <li
+      className="result-card"
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+    >
       <div className="image-container">
         <Image
           src={thumbnailUrl}
@@ -29,7 +34,10 @@ const ResultsCard = ({
         />
       </div>
       <div className="info-container">
-        <h4 className="result-title font-body-md">
+        <h4
+          className="result-title font-body-md"
+          title={title}
+        >
           {title}
         </h4>
         <div className="result-author">{author}</div>
