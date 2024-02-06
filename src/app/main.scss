@@ -34,6 +34,20 @@
   @media (max-width: $md) {
     padding: 1.25rem;
   }
+
+  .card-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: $lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $md) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
 
 .right-content {

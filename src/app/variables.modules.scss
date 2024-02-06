@@ -1,7 +1,9 @@
 $accent-color: rgb(255, 133, 21);
-$light-color: #2b2b2b;
+$light-color: #414141;
 $foreground-color: #282828;
 $card-color: #333333;
+$card-color-darker: #2b2b2b;
+
 $results-card-color: #151515;
 $border-radius: 0.6rem;
 $card-radius: 0.375rem;
@@ -17,7 +19,7 @@ $nav-height: 64px;
 $hover-color: rgba(46, 40, 40, 0.04);
 $result-card-hover-color: rgba(255, 255, 255, 0.1);
 
-$text-light: #5f5f5f;
+$text-light: #7a7a7a;
 
 :export {
   accentColor: $accent-color;
@@ -34,6 +36,8 @@ $text-light: #5f5f5f;
   player-height: $player-height;
   nav-height: $nav-height;
   results-card-color: $results-card-color;
+  card-color: $card-color;
+  card-color-darker: $card-color-darker;
   text-light: $text-light;
   result-card-hover-color: $result-card-hover-color;
 }

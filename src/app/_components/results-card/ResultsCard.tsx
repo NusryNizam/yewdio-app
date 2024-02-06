@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { CARD_VARIANT } from "@/types/data.types";
 import { secondsToHMS } from "@/utils/formatting";
 import "./ResultsCard.scss";
 
@@ -9,6 +10,7 @@ type ResultsCardProp = {
   author: string;
   thumbnailUrl: string;
   onClick: () => void;
+  variant?: CARD_VARIANT;
 };
 
 const ResultsCard = ({
@@ -17,15 +19,27 @@ const ResultsCard = ({
   author,
   thumbnailUrl,
   onClick,
+  variant = CARD_VARIANT.NORMAL,
 }: ResultsCardProp) => {
+  // TODO: Add elements for the detailed variant
   return (
     <li
-      className="result-card"
+      className={`result-card ${
+        variant === CARD_VARIANT.DETAILED
+          ? "result-card-detailed"
+          : ""
+      }`}
       role="button"
       tabIndex={0}
       onClick={onClick}
     >
-      <div className="image-container">
+      <div
+        className={`image-container ${
+          variant === CARD_VARIANT.DETAILED
+            ? "image-container-detailed"
+            : ""
+        }`}
+      >
         <Image
           src={thumbnailUrl}
           alt={`Thumbnail - ${title}`}

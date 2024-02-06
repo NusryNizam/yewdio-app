@@ -10,3 +10,8 @@ export interface IResults {
   selectedAudio?: IAudioDetailsResponseDTO;
   isSearchOverlay: boolean;
 }
+
+export enum CARD_VARIANT {
+  NORMAL = "normal",
+  DETAILED = "detailed",
+}
