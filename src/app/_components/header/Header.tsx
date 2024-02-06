@@ -1,9 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import "./Header.scss";
+import {
+  searchAudio,
+  setIsSearchOverlay,
+} from "@/lib/dataSlice";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "@/lib/hooks";
 import { dmSans } from "@/utils/fonts";
+import { debounce } from "lodash";
+import { useEffect, useRef, useState } from "react";
 import Results from "../results/Results";
+import "./Header.scss";
 
 type HeaderProps = {
   heading: string;
@@ -11,11 +20,37 @@ type HeaderProps = {
 const Header = ({ heading }: HeaderProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  const { isSearchOverlay } = useAppSelector(
+    (state) => state.data,
+  );
+
+  const dispatch = useAppDispatch();
+
   const handleSearch = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.length > 0) {
+      dispatch(setIsSearchOverlay(true));
+      debouncedSearch(value);
+    }
   };
+
+  const debouncedSearch = useRef(
+    debounce(
+      (term) => {
+        dispatch(searchAudio(term));
+      },
+      400,
+      { leading: false, trailing: true },
+    ),
+  ).current;
+
+  useEffect(() => {
+    return () => debouncedSearch.cancel();
+  }, [debouncedSearch]);
 
   return (
     <div className="header">
@@ -29,8 +64,9 @@ const Header = ({ heading }: HeaderProps) => {
         className="search-input"
         value={searchTerm}
         onChange={handleSearch}
+        onFocus={() => dispatch(setIsSearchOverlay(true))}
       />
-      {searchTerm ? <Results /> : null}
+      {isSearchOverlay ? <Results /> : null}
     </div>
   );
 };

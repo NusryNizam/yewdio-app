@@ -2,7 +2,6 @@
 
 .header {
   width: 100%;
-  // border: 1px solid red;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -10,8 +9,9 @@
   margin-bottom: 4rem;
   position: sticky;
   top: 0;
+  z-index: 99;
 
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     inset: -2rem;
@@ -60,6 +60,7 @@
   background-color: $light-color;
   min-width: 24rem;
   height: 3.25rem;
+  z-index: 99;
 
   :focus-visible {
     outline: 1px solid $accent-color;

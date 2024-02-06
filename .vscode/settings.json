@@ -1,5 +1,8 @@
 {
-    "editor.formatOnSave": true,
-    "editor.stickyScroll.enabled": true,
-    "editor.smoothScrolling": true,
+  "editor.formatOnSave": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
 }

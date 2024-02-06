@@ -1,10 +1,10 @@
+import Sidebar from "@/components/Sidebar/Sidebar";
+import { inter } from "@/utils/fonts";
 import type { Metadata } from "next";
+import StoreProvider from "./StoreProvider";
+import Player from "./_components/player/Player";
 import "./globals.scss";
 import "./main.scss";
-import { inter } from "@/utils/fonts";
-import Sidebar from "@/components/Sidebar/Sidebar";
-import Player from "./_components/player/Player";
-import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Yewdio",
