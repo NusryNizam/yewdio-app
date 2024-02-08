@@ -3,6 +3,6 @@
   "editor.stickyScroll.enabled": true,
   "editor.smoothScrolling": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   }
 }

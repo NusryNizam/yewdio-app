@@ -65,6 +65,11 @@ const Header = ({ heading }: HeaderProps) => {
         value={searchTerm}
         onChange={handleSearch}
         onFocus={() => dispatch(setIsSearchOverlay(true))}
+        onKeyUp={(e) =>
+          e.key === "Escape"
+            ? dispatch(setIsSearchOverlay(false))
+            : null
+        }
       />
       {isSearchOverlay ? <Results /> : null}
     </div>
