@@ -7,7 +7,7 @@
 
   @media (max-width: $lg) {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: 1fr $nav-height;
     height: 100vh;
     height: 100dvh;
@@ -54,6 +54,7 @@
   width: 100%;
   display: grid;
   grid-template-rows: 1fr $player-height;
+  grid-template-columns: 100%;
 }
 
 .children {
