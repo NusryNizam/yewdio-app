@@ -1,3 +1,5 @@
+import { AUDIO_QUALITY } from "./data.types";
+
 export interface ISearchResponseDTO {
   type: AUDIO_TYPES;
   title: string;
@@ -68,8 +70,7 @@ interface IAdaptiveFormat {
   projectionType: number;
   container: string;
   encoding: string;
-  qualityLabel: string;
-  resolution: string;
+  audioQuality: AUDIO_QUALITY;
 }
 
 interface IRecommendedVideo {

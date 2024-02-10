@@ -14,4 +14,11 @@ export interface IResults {
 export enum CARD_VARIANT {
   NORMAL = "normal",
   DETAILED = "detailed",
+  SINGLETON = "singleton",
+}
+
+export enum AUDIO_QUALITY {
+  ULTRA_LOW = "AUDIO_QUALITY_ULTRALOW",
+  LOW = "AUDIO_QUALITY_LOW",
+  MEDIUM = "AUDIO_QUALITY_MEDIUM",
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   getAudioDetails,
   setIsSearchOverlay,
@@ -16,8 +18,12 @@ import ResultsCard from "../results-card/ResultsCard";
 import "./Results.scss";
 
 const Results = () => {
-  const { results, isSearchingAudio, isSearchOverlay } =
-    useAppSelector((state) => state.data);
+  const {
+    results,
+    isSearchingAudio,
+    isSearchOverlay,
+    selectedAudio,
+  } = useAppSelector((state) => state.data);
 
   const dispatch = useAppDispatch();
 

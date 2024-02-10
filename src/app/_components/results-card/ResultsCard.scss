@@ -156,3 +156,24 @@
     -webkit-box-orient: vertical;
   }
 }
+
+.result {
+  &-card-singleton {
+    height: 100%;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      cursor: auto;
+    }
+
+    .image-container {
+      &-singleton {
+        border-radius: 0;
+        aspect-ratio: 1;
+        min-width: 5.375rem;
+        height: 100%;
+      }
+    }
+  }
+}
