@@ -8,9 +8,30 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-bottom: 4rem;
 
   @media (max-width: $sm) {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.show-all {
+  min-width: 180px;
+  min-height: 248px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.empty-state {
+  min-height: 14rem;
+  border: 1px dashed $text-light;
+  width: 50%;
+  border-radius: $border-radius;
+  display: grid;
+  place-items: center;
+  color: $text-light;
 }

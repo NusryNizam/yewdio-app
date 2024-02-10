@@ -34,16 +34,7 @@ const Player = () => {
 
   return (
     <div className="player">
-      {/* <div>Selected Audio: {selectedAudio?.title}</div>
-      <button
-        onClick={toggleAudio}
-        style={{
-          padding: "1rem",
-          border: "1px solid grey",
-        }}
-      >
-        Play
-      </button> */}
+      {/* <div className="slider" style={{width: duration}}></div> */}
       <div className="now-playing-info-container">
         <ResultsCard
           title={selectedAudio?.title ?? ""}
