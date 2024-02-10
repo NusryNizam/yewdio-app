@@ -1,6 +1,7 @@
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { inter } from "@/utils/fonts";
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import StoreProvider from "./StoreProvider";
 import Player from "./_components/player/Player";
 import "./globals.scss";
@@ -27,6 +28,7 @@ export default function RootLayout({
               <Player />
             </div>
           </StoreProvider>
+          <Toaster />
         </main>
       </body>
     </html>

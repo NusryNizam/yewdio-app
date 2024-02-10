@@ -11,6 +11,10 @@
 }
 
 .now-playing-info-container {
-  max-width: 20rem;
+  max-width: 24rem;
   height: 100%;
+
+  @media (max-width: $sm) {
+    max-width: 20rem;
+  }
 }

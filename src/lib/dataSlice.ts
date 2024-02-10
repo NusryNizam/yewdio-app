@@ -9,12 +9,15 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
+import toast from "react-hot-toast";
 import { api } from "./api";
 
 const initialState: IResults = {
   isSearchingAudio: false,
   isGettingAudioDetails: false,
   isSearchOverlay: false,
+  favourites: [],
+  library: [],
 };
 
 export const searchAudio = createAsyncThunk(
@@ -80,6 +83,36 @@ const dataSlice = createSlice({
     ) => {
       state.isSearchOverlay = action.payload;
     },
+    addToFavourites: (
+      state,
+      action: PayloadAction<ISearchResponseDTO>,
+    ) => {
+      const index = state.favourites.findIndex(
+        (favItem) =>
+          favItem.videoId === action.payload.videoId,
+      );
+
+      if (index === -1) {
+        state.favourites.push(action.payload);
+      } else {
+        console.log("Already added");
+      }
+    },
+    addToLibrary: (
+      state,
+      action: PayloadAction<ISearchResponseDTO>,
+    ) => {
+      const index = state.library.findIndex(
+        (item) => item.videoId === action.payload.videoId,
+      );
+
+      if (index === -1) {
+        state.library.push(action.payload);
+        toast.success("Successfully added to library");
+      } else {
+        toast.error("Already in library");
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -111,5 +144,9 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setIsSearchOverlay } = dataSlice.actions;
+export const {
+  setIsSearchOverlay,
+  addToLibrary,
+  addToFavourites,
+} = dataSlice.actions;
 export default dataSlice.reducer;

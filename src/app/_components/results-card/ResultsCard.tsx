@@ -2,10 +2,11 @@ import Image from "next/image";
 
 import { CARD_VARIANT } from "@/types/data.types";
 import { secondsToHMS } from "@/utils/formatting";
-import React from "react";
+import React, { useMemo } from "react";
 import "./ResultsCard.scss";
 
 import placeholder from "@/../public/placeholder.png";
+import { useAppSelector } from "@/lib/hooks";
 
 type ResultsCardProp = {
   title: string;
@@ -14,6 +15,8 @@ type ResultsCardProp = {
   thumbnailUrl: string;
   onClick: () => void;
   variant?: CARD_VARIANT;
+  addToLibrary?: () => void;
+  videoId?: string;
 };
 
 const ResultsCard = ({
@@ -23,17 +26,21 @@ const ResultsCard = ({
   thumbnailUrl,
   onClick,
   variant = CARD_VARIANT.NORMAL,
+  addToLibrary,
+  videoId,
 }: ResultsCardProp) => {
   // TODO: Add elements for the detailed variant
 
-  const addToLibrary = (
+  const { library } = useAppSelector((state) => state.data);
+
+  const stopPropagation = (
     event: React.MouseEvent<
       HTMLButtonElement,
       globalThis.MouseEvent
     >,
   ) => {
     event.stopPropagation();
-    // TODO: Add to library
+    if (addToLibrary) addToLibrary();
   };
 
   const moreOptions = (
@@ -45,6 +52,14 @@ const ResultsCard = ({
     event.stopPropagation();
     // TODO: More optoins
   };
+
+  const isInLibary = useMemo(
+    () =>
+      library.findIndex(
+        (item) => item.videoId === videoId,
+      ) > -1,
+    [library, videoId],
+  );
 
   return (
     <li
@@ -59,10 +74,10 @@ const ResultsCard = ({
       tabIndex={0}
       onClick={onClick}
     >
-      {variant !== CARD_VARIANT.SINGLETON ? (
+      {variant !== CARD_VARIANT.SINGLETON && !isInLibary ? (
         <button
           className={`add-to-library-button`}
-          onClick={addToLibrary}
+          onClick={stopPropagation}
         >
           <svg
             width="22"

@@ -1,7 +1,8 @@
 "use client";
 
+import { useFetchDetails } from "@/hooks/useFetchDetails";
 import {
-  getAudioDetails,
+  addToLibrary,
   setIsSearchOverlay,
 } from "@/lib/dataSlice";
 import {
@@ -10,10 +11,9 @@ import {
 } from "@/lib/hooks";
 import {
   AUDIO_TYPES,
+  ISearchResponseDTO,
   THUMBNAIL_QUALITY,
 } from "@/types/api.types";
-import { debounce } from "lodash";
-import { useEffect, useRef } from "react";
 import ResultsCard from "../results-card/ResultsCard";
 import "./Results.scss";
 
@@ -26,29 +26,34 @@ const Results = () => {
   } = useAppSelector((state) => state.data);
 
   const dispatch = useAppDispatch();
+  const [playAudio] = useFetchDetails();
 
   const hideOverlay = () => {
     dispatch(setIsSearchOverlay(false));
   };
 
-  const playAudio = (videoId: string) => {
-    dispatch(setIsSearchOverlay(false));
-    debouncedGetDetails(videoId);
+  // const playAudio = (videoId: string) => {
+  //   dispatch(setIsSearchOverlay(false));
+  //   debouncedGetDetails(videoId);
+  // };
+
+  // const debouncedGetDetails = useRef(
+  //   debounce(
+  //     (videoId) => {
+  //       dispatch(getAudioDetails(videoId));
+  //     },
+  //     400,
+  //     { leading: true, trailing: false },
+  //   ),
+  // ).current;
+
+  // useEffect(() => {
+  //   return () => debouncedGetDetails.cancel();
+  // }, [debouncedGetDetails]);
+
+  const handleAddToLibrary = (data: ISearchResponseDTO) => {
+    dispatch(addToLibrary(data));
   };
-
-  const debouncedGetDetails = useRef(
-    debounce(
-      (videoId) => {
-        dispatch(getAudioDetails(videoId));
-      },
-      400,
-      { leading: true, trailing: false },
-    ),
-  ).current;
-
-  useEffect(() => {
-    return () => debouncedGetDetails.cancel();
-  }, [debouncedGetDetails]);
 
   if (isSearchingAudio)
     return (
@@ -74,20 +79,26 @@ const Results = () => {
           {results && results.length > 0 ? (
             results
               .filter((e) => e.type === AUDIO_TYPES.VIDEO)
-              .map(
-                ({
+              .map((result) => {
+                const {
                   title,
                   author,
                   videoId,
                   lengthSeconds,
                   videoThumbnails,
-                }) => (
+                } = result;
+
+                return (
                   <ResultsCard
                     key={videoId}
                     onClick={() => playAudio(videoId)}
+                    addToLibrary={() =>
+                      handleAddToLibrary(result)
+                    }
                     title={title}
                     author={author}
                     duration={lengthSeconds}
+                    videoId={videoId}
                     thumbnailUrl={
                       (videoThumbnails ?? []).filter(
                         (thumb) =>
@@ -96,8 +107,8 @@ const Results = () => {
                       )[0]?.url
                     }
                   />
-                ),
-              )
+                );
+              })
           ) : (
             <div className="middle">
               <span className="helper-text">
