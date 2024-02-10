@@ -1,8 +1,11 @@
 import "./Loader.scss";
 
-const Loader = () => {
+type LoaderProps = {
+  customClassName?: string;
+};
+const Loader = ({ customClassName = "" }: LoaderProps) => {
   return (
-    <div className="loader-container">
+    <div className={`loader-container ${customClassName}`}>
       <span className="loader"></span>
     </div>
   );

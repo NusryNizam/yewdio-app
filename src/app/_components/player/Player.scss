@@ -10,6 +10,16 @@
   @media (max-width: $md) {
     padding: 1rem 1.25rem;
   }
+
+  .player-spinner {
+    position: absolute;
+    left: 2rem;
+    background-color: transparent;
+    aspect-ratio: 1;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+  }
 }
 
 .now-playing-info-container {
@@ -31,4 +41,8 @@
   background-color: $accent-color;
   width: 0%;
   height: 3px;
+}
+
+.blur {
+  filter: blur(2px);
 }

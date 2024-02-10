@@ -34,4 +34,9 @@
   display: grid;
   place-items: center;
   color: $text-light;
+  padding: 1rem;
+
+  @media (max-width: $md) {
+    width: 100%;
+  }
 }

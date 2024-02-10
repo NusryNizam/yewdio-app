@@ -7,13 +7,13 @@ import {
   CARD_VARIANT,
 } from "@/types/data.types";
 import { useEffect } from "react";
+import Loader from "../loader/Loader";
 import ResultsCard from "../results-card/ResultsCard";
 import "./Player.scss";
 
 const Player = () => {
-  const { selectedAudio } = useAppSelector(
-    (state) => state.data,
-  );
+  const { selectedAudio, isGettingAudioDetails } =
+    useAppSelector((state) => state.data);
 
   const [playing, toggle, load] = useAudio();
 
@@ -34,8 +34,14 @@ const Player = () => {
 
   return (
     <div className="player">
-      {/* <div className="slider" style={{width: duration}}></div> */}
-      <div className="now-playing-info-container">
+      {isGettingAudioDetails ? (
+        <Loader customClassName="player-spinner" />
+      ) : null}
+      <div
+        className={`now-playing-info-container ${
+          isGettingAudioDetails ? "blur" : ""
+        }`}
+      >
         <ResultsCard
           title={selectedAudio?.title ?? ""}
           duration={selectedAudio?.lengthSeconds ?? 0}
