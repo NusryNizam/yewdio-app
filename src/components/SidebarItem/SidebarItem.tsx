@@ -9,11 +9,13 @@ import "./SidebarItem.scss";
 type Props = {
   name: string;
   icon: string;
+  selectedIcon: string;
   route: string;
 };
 const SidebarItem = ({
   name,
   icon: Icon,
+  selectedIcon: SelectedIcon,
   route,
 }: Props) => {
   const pathName = usePathname();
@@ -26,7 +28,10 @@ const SidebarItem = ({
         inter.className
       } ${isActive ? "isActive" : null}`}
     >
-      <Image src={Icon} alt={name} />
+      <Image
+        src={isActive ? SelectedIcon : Icon}
+        alt={name}
+      />
       <span className="name">{name}</span>
     </Link>
   );

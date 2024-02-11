@@ -54,6 +54,7 @@
   gap: 2rem;
   margin-left: auto;
   padding: 1rem;
+  flex-shrink: 0;
 
   .play-pause-icon {
     width: 56px;
@@ -73,11 +74,28 @@
     }
   }
 
+  .next,
+  .previous {
+    @media (max-width: $md) {
+      display: none;
+    }
+  }
+
   button:disabled {
     cursor: unset;
+  }
+
+  @media (max-width: $sm) {
+    min-width: 100px;
+    min-height: 100px;
+    position: fixed;
   }
 }
 
 .icon-favourite-container {
   padding-inline: 1.5rem;
+
+  @media (max-width: $md) {
+    display: none;
+  }
 }
