@@ -12,6 +12,8 @@ import { CARD_VARIANT } from "@/types/data.types";
 import Header from "../_components/header/Header";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
+import PlayAllButton from "../_components/play-all-button/PlayAllButton";
+
 const Library = () => {
   const { library } = useAppSelector(selectCollection);
   const [playAudio] = useFetchDetails();
@@ -45,6 +47,7 @@ const Library = () => {
         ) : (
           <EmptyState message="Looks like you don't have anything on your library yet." />
         )}
+        {library.length > 0 ? <PlayAllButton /> : null}
       </div>
     </section>
   );

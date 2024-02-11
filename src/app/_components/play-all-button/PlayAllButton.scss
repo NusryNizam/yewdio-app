@@ -1,0 +1,49 @@
+@import "/src/app/variables.modules.scss";
+
+.play-all-container {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+
+  @media (max-width: $lg) {
+    justify-content: center;
+  }
+
+  @media (max-width: $md) {
+    justify-content: right;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .play-all {
+    border-radius: 40px;
+    background-color: $accent-color;
+    color: black;
+    font-weight: bold;
+    max-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem 0.6rem 0.9rem;
+    fill: black;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.555);
+    transition: all 250ms ease-in-out;
+
+    img {
+      filter: brightness(0%);
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 black;
+      filter: brightness(106%);
+      scale: 1.01;
+    }
+
+    &:active {
+      scale: 0.99;
+    }
+  }
+}

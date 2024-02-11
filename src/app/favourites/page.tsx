@@ -8,6 +8,7 @@ import {
 } from "@/types/api.types";
 import { CARD_VARIANT } from "@/types/data.types";
 import Header from "../_components/header/Header";
+import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
 const Favourites = () => {
@@ -47,6 +48,7 @@ const Favourites = () => {
         yet."
           />
         )}
+        {favourites.length > 0 ? <PlayAllButton /> : null}
       </div>
     </section>
   );
