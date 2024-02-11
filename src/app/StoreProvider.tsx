@@ -15,7 +15,9 @@ export default function StoreProvider({
   return (
     <Provider store={store}>
       <PersistGate
-        loading={<Loader />}
+        loading={
+          <Loader customClassName="full-height-loader" />
+        }
         persistor={persistor}
       >
         {children}

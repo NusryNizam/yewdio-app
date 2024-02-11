@@ -1,7 +1,9 @@
 "use client";
 
+import EmptyState from "@/components/EmptyState/EmptyState";
 import { useFetchDetails } from "@/hooks/useFetchDetails";
 import { useAppSelector } from "@/lib/hooks";
+import { selectCollection } from "@/selectors/collection.selector";
 import {
   AUDIO_TYPES,
   THUMBNAIL_QUALITY,
@@ -11,32 +13,38 @@ import Header from "../_components/header/Header";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
 const Library = () => {
-  const { library } = useAppSelector((state) => state.data);
+  const { library } = useAppSelector(selectCollection);
   const [playAudio] = useFetchDetails();
 
   return (
     <section className="main-section">
       <Header heading="Library" />
       <div className="card-container">
-        {(library ?? [])
-          .filter((item) => item.type === AUDIO_TYPES.VIDEO)
-          .map((audio) => (
-            <ResultsCard
-              key={audio.videoId}
-              author={audio.author}
-              title={audio.title}
-              thumbnailUrl={
-                audio.videoThumbnails?.filter(
-                  (thumb) =>
-                    thumb.quality ===
-                    THUMBNAIL_QUALITY.MIDDLE,
-                )[0]?.url
-              }
-              duration={audio.lengthSeconds}
-              onClick={() => playAudio(audio.videoId)}
-              variant={CARD_VARIANT.DETAILED}
-            />
-          ))}
+        {library.length > 0 ? (
+          (library ?? [])
+            .filter(
+              (item) => item.type === AUDIO_TYPES.VIDEO,
+            )
+            .map((audio) => (
+              <ResultsCard
+                key={audio.videoId}
+                author={audio.author}
+                title={audio.title}
+                thumbnailUrl={
+                  audio.videoThumbnails?.filter(
+                    (thumb) =>
+                      thumb.quality ===
+                      THUMBNAIL_QUALITY.MIDDLE,
+                  )[0]?.url
+                }
+                duration={audio.lengthSeconds}
+                onClick={() => playAudio(audio.videoId)}
+                variant={CARD_VARIANT.DETAILED}
+              />
+            ))
+        ) : (
+          <EmptyState message="Looks like you don't have anything on your library yet." />
+        )}
       </div>
     </section>
   );

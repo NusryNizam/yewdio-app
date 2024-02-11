@@ -7,6 +7,7 @@ import "./ResultsCard.scss";
 
 import placeholder from "@/../public/placeholder.png";
 import { useAppSelector } from "@/lib/hooks";
+import { selectCollection } from "@/selectors/collection.selector";
 
 type ResultsCardProp = {
   title: string;
@@ -31,7 +32,7 @@ const ResultsCard = ({
 }: ResultsCardProp) => {
   // TODO: Add elements for the detailed variant
 
-  const { library } = useAppSelector((state) => state.data);
+  const { library } = useAppSelector(selectCollection);
 
   const stopPropagation = (
     event: React.MouseEvent<

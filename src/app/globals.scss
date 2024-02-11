@@ -135,3 +135,14 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.full-height-loader {
+  height: calc(100vh - 2rem);
+  height: calc(100dvh - 2rem);
+  border-radius: $border-radius;
+
+  @media (max-width: $lg) {
+    height: calc(100vh - 2rem - 5rem);
+    height: calc(100dvh - 2rem - 5rem);
+  }
+}

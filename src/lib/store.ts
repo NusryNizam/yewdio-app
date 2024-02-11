@@ -16,15 +16,18 @@ import { ThunkAction } from "redux-thunk";
 import dataSlice from "./dataSlice";
 
 import storage from "redux-persist/lib/storage";
+import collectionSlice from "./collectionSlice";
 
 const rootReducer = combineReducers({
   data: dataSlice,
+  collection: collectionSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
+  whitelist: ["collection"],
 };
 
 const persistedReducer = persistReducer(

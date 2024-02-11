@@ -3,14 +3,16 @@
 import Header from "@/app/_components/header/Header";
 import { useFetchDetails } from "@/hooks/useFetchDetails";
 import { useAppSelector } from "@/lib/hooks";
+import { selectCollection } from "@/selectors/collection.selector";
 import { THUMBNAIL_QUALITY } from "@/types/api.types";
 import Link from "next/link";
 import Card from "../Card/Card";
+import EmptyState from "../EmptyState/EmptyState";
 import "./MainSection.scss";
 
 const MainSection = () => {
   const { library, favourites } = useAppSelector(
-    (state) => state.data,
+    selectCollection,
   );
   const [playAudio] = useFetchDetails();
 
@@ -58,10 +60,10 @@ const MainSection = () => {
             </Link>
           </>
         ) : (
-          <div className="empty-state">
-            Looks like you don&apos;t have any items on your
-            library yet.
-          </div>
+          <EmptyState
+            message="Looks like you don't have any items on your
+          library yet."
+          />
         )}
       </div>
 
@@ -106,10 +108,10 @@ const MainSection = () => {
             </Link>
           </>
         ) : (
-          <div className="empty-state">
-            Looks like you don&apos;t have any favourites
-            yet.
-          </div>
+          <EmptyState
+            message="Looks like you don't have any favourites
+          yet."
+          />
         )}
       </div>
     </section>

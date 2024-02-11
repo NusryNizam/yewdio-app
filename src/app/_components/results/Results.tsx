@@ -1,10 +1,8 @@
 "use client";
 
 import { useFetchDetails } from "@/hooks/useFetchDetails";
-import {
-  addToLibrary,
-  setIsSearchOverlay,
-} from "@/lib/dataSlice";
+import { addToLibrary } from "@/lib/collectionSlice";
+import { setIsSearchOverlay } from "@/lib/dataSlice";
 import {
   useAppDispatch,
   useAppSelector,
