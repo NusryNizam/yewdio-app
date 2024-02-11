@@ -6,19 +6,19 @@ export interface ISearchResponseDTO {
   videoId: string;
   author: string;
   authorId: string;
-  authorUrl: string;
-  authorVerified: boolean;
+  authorUrl?: string;
+  authorVerified?: boolean;
   videoThumbnails: IVideoThumbs[];
-  description: string;
-  descriptionHtml: string;
-  viewCount: number;
-  viewCountText: string;
-  published: number;
-  publishedText: string;
   lengthSeconds: number;
-  liveNow: boolean;
-  premium: boolean;
-  isUpcoming: boolean;
+  description?: string;
+  descriptionHtml?: string;
+  viewCount?: number;
+  viewCountText?: string;
+  published?: number;
+  publishedText?: string;
+  liveNow?: boolean;
+  premium?: boolean;
+  isUpcoming?: boolean;
 }
 
 export enum AUDIO_TYPES {

@@ -23,6 +23,7 @@ export const useAudio = (): [
     if (src) {
       audio.current.src = src;
       audio.current.play();
+      setPlaying(true);
     }
   }, [src]);
 

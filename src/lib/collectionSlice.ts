@@ -26,8 +26,25 @@ const collectionSlice = createSlice({
 
       if (index === -1) {
         state.favourites.push(action.payload);
+        toast.success("Successfully added to favourites");
       } else {
-        console.log("Already added");
+        toast("Already added to favourites");
+      }
+    },
+    removeFromFavourites: (
+      state,
+      action: PayloadAction<ISearchResponseDTO>,
+    ) => {
+      const index = state.favourites.findIndex(
+        (favItem) =>
+          favItem.videoId === action.payload.videoId,
+      );
+
+      if (index != -1) {
+        state.favourites = state.favourites.filter(
+          (item) => item.videoId !== action.payload.videoId,
+        );
+        toast.success("Removed from favourites");
       }
     },
     addToLibrary: (
@@ -42,13 +59,16 @@ const collectionSlice = createSlice({
         state.library.push(action.payload);
         toast.success("Successfully added to library");
       } else {
-        toast.error("Already in library");
+        toast.error("Item already in library");
       }
     },
   },
 });
 
-export const { addToLibrary, addToFavourites } =
-  collectionSlice.actions;
+export const {
+  addToLibrary,
+  addToFavourites,
+  removeFromFavourites,
+} = collectionSlice.actions;
 
 export default collectionSlice.reducer;

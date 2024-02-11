@@ -6,6 +6,8 @@
   padding: 1rem 2rem;
   padding-top: calc(1rem + 2px);
   position: relative;
+  display: flex;
+  align-items: center;
 
   @media (max-width: $md) {
     padding: 1rem 1.25rem;
@@ -45,4 +47,37 @@
 
 .blur {
   filter: blur(2px);
+}
+
+.controls {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+  padding: 1rem;
+
+  .play-pause-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  * {
+    cursor: pointer;
+    transform: all 250ms ease-in-out;
+
+    &:hover {
+      scale: 1.01;
+    }
+
+    &:active {
+      scale: 0.99;
+    }
+  }
+
+  button:disabled {
+    cursor: unset;
+  }
+}
+
+.icon-favourite-container {
+  padding-inline: 1.5rem;
 }

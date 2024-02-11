@@ -28,7 +28,15 @@ export default function RootLayout({
               <Player />
             </div>
           </StoreProvider>
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+            }}
+          />
         </main>
       </body>
     </html>
