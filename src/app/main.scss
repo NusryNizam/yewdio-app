@@ -20,9 +20,7 @@
   border-radius: $border-radius $border-radius 0 0;
   padding: 2rem;
   max-height: calc(100vh - (2 * $gap-1) - $player-height);
-  // border: 1px solid yellow;
   overflow: hidden auto;
-  position: relative;
 
   @media (max-width: $lg) {
     grid-row: 1/2;
@@ -56,6 +54,7 @@
   display: grid;
   grid-template-rows: 1fr $player-height;
   grid-template-columns: 100%;
+  position: relative;
 }
 
 .children {

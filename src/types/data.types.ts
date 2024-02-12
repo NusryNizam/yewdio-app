@@ -9,6 +9,9 @@ export interface IResults {
   results?: ISearchResponseDTO[];
   selectedAudio?: IAudioDetailsResponseDTO;
   isSearchOverlay: boolean;
+  isPlayingPlaylist: boolean;
+  playlistIndex: number[];
+  currentIndex?: number;
 }
 
 export enum CARD_VARIANT {

@@ -2,7 +2,7 @@
 
 .play-all-container {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: calc(1.5rem + $player-height);
   left: 2rem;
   right: 2rem;
   display: flex;

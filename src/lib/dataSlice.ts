@@ -3,6 +3,7 @@ import {
   ISearchResponseDTO,
 } from "@/types/api.types";
 import { IResults } from "@/types/data.types";
+import { shuffleArray } from "@/utils/shuffleArray";
 import {
   PayloadAction,
   createAsyncThunk,
@@ -15,6 +16,9 @@ const initialState: IResults = {
   isSearchingAudio: false,
   isGettingAudioDetails: false,
   isSearchOverlay: false,
+
+  isPlayingPlaylist: false,
+  playlistIndex: [],
 };
 
 export const searchAudio = createAsyncThunk(
@@ -80,6 +84,20 @@ const dataSlice = createSlice({
     ) => {
       state.isSearchOverlay = action.payload;
     },
+    playFavouriteItems: (
+      state,
+      action: PayloadAction<{ length: number }>,
+    ) => {
+      const favCount = action.payload.length;
+      if (favCount > 0) {
+        let indexes = [];
+        for (let i = 0; i < favCount; i++) {
+          indexes.push(i);
+        }
+        state.playlistIndex = shuffleArray(indexes);
+        state.currentIndex = 0;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -111,6 +129,7 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setIsSearchOverlay } = dataSlice.actions;
+export const { setIsSearchOverlay, playFavouriteItems } =
+  dataSlice.actions;
 
 export default dataSlice.reducer;

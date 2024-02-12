@@ -47,8 +47,9 @@ const Library = () => {
         ) : (
           <EmptyState message="Looks like you don't have anything on your library yet." />
         )}
-        {library.length > 0 ? <PlayAllButton /> : null}
       </div>
+
+      {library.length > 1 ? <PlayAllButton /> : null}
     </section>
   );
 };
