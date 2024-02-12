@@ -4,15 +4,22 @@ export const useAudio = (): [
   boolean,
   () => void,
   (url: string) => void,
+  currentPosition: number,
 ] => {
   const audio = useRef(new Audio());
   const [playing, setPlaying] = useState(false);
   const [src, setSrc] = useState("");
+  const [currentPosition, setCurrentPosition] = useState(0);
 
   const toggle = () => setPlaying(!playing);
 
-  const handleAudioEnded = () => {
+  const handleAudioEnded = (interval?: NodeJS.Timeout) => {
+    if (interval) {
+      clearInterval(interval);
+    }
+
     setPlaying(false);
+    setCurrentPosition(0);
   };
 
   const load = (url: string) => {
@@ -20,16 +27,23 @@ export const useAudio = (): [
   };
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
     if (src) {
       audio.current.src = src;
       audio.current.play();
       setPlaying(true);
-    }
-  }, [src]);
+      interval = setInterval(() => {
+        console.log("interval");
+        setCurrentPosition(audio.current.currentTime);
+      }, 1000);
 
-  useEffect(() => {
-    audio.current.onended = handleAudioEnded;
-  }, [audio]);
+      audio.current.onended = () =>
+        handleAudioEnded(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [src]);
 
   useEffect(() => {
     if (playing) {
@@ -39,5 +53,5 @@ export const useAudio = (): [
     }
   }, [audio, playing]);
 
-  return [playing, toggle, load];
+  return [playing, toggle, load, currentPosition];
 };

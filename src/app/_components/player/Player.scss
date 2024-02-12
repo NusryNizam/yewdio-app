@@ -21,6 +21,10 @@
     width: 90px;
     height: 90px;
     z-index: 1;
+
+    @media (max-width: $md) {
+      left: 1rem;
+    }
   }
 }
 
@@ -41,7 +45,6 @@
   border-radius: 0;
 
   background-color: $accent-color;
-  width: 0%;
   height: 3px;
 }
 

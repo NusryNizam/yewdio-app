@@ -34,7 +34,8 @@ const Player = () => {
   const { favourites } = useAppSelector(selectCollection);
   const dispatch = useAppDispatch();
 
-  const [playing, toggle, load] = useAudio();
+  const [playing, toggle, load, currentPosition] =
+    useAudio();
 
   const toggleAudio = () => {
     toggle();
@@ -94,6 +95,11 @@ const Player = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(currentPosition);
+    console.log(selectedAudio?.lengthSeconds);
+  }, [currentPosition, selectedAudio?.lengthSeconds]);
+
   return (
     <div className="player">
       {isGettingAudioDetails ? (
@@ -104,6 +110,20 @@ const Player = () => {
           isGettingAudioDetails ? "blur" : ""
         }`}
       >
+        <div
+          className="slider"
+          style={
+            selectedAudio
+              ? {
+                  width: `${
+                    (currentPosition /
+                      selectedAudio.lengthSeconds) *
+                    100
+                  }%`,
+                }
+              : { width: "0%" }
+          }
+        ></div>
         <ResultsCard
           title={selectedAudio?.title ?? ""}
           duration={selectedAudio?.lengthSeconds ?? 0}
