@@ -14,9 +14,9 @@ export const useAudio = (): [
   const toggle = () => setPlaying(!playing);
 
   const handleAudioEnded = (interval?: NodeJS.Timeout) => {
-    if (interval) {
-      clearInterval(interval);
-    }
+    // if (interval) {
+    //   clearInterval(interval);
+    // }
 
     setPlaying(false);
     setCurrentPosition(0);

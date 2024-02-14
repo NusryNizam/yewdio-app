@@ -2,7 +2,10 @@
 
 import EmptyState from "@/components/EmptyState/EmptyState";
 import { useFetchDetails } from "@/hooks/useFetchDetails";
-import { playFavouriteItems } from "@/lib/dataSlice";
+import {
+  getAudioDetails,
+  playFavouriteItems,
+} from "@/lib/dataSlice";
 import {
   useAppDispatch,
   useAppSelector,
@@ -19,10 +22,10 @@ import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
 const Favourites = () => {
-  const [load] = useFetchDetails();
+  const { playAudio } = useFetchDetails();
   const { favourites } = useAppSelector(selectCollection);
 
-  const { playlistIndex } = useAppSelector(
+  const { playlistIndex, currentIndex } = useAppSelector(
     (state) => state.data,
   );
 
@@ -38,8 +41,13 @@ const Favourites = () => {
 
   useEffect(() => {
     if (playlistIndex.length > 0)
-      load(favourites[playlistIndex[0]].videoId);
-  }, [favourites, load, playlistIndex]);
+      dispatch(
+        getAudioDetails(
+          favourites[playlistIndex[currentIndex ?? 0]]
+            .videoId,
+        ),
+      );
+  }, [currentIndex, dispatch, favourites, playlistIndex]);
 
   return (
     <section className="main-section">

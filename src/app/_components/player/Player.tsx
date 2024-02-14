@@ -21,6 +21,7 @@ import Loader from "../loader/Loader";
 import ResultsCard from "../results-card/ResultsCard";
 import "./Player.scss";
 
+import { playNextSong } from "@/lib/dataSlice";
 import FavouritesOutlineIcon from "../../../../public/icons/icon-favourite-outline.svg";
 import FavouritesIcon from "../../../../public/icons/icon-favourite.svg";
 import PauseIcon from "../../../../public/icons/icon-pause.svg";
@@ -29,8 +30,13 @@ import PreviousIcon from "../../../../public/icons/icon-play-previous.svg";
 import PlayIcon from "../../../../public/icons/icon-play.svg";
 
 const Player = () => {
-  const { selectedAudio, isGettingAudioDetails } =
-    useAppSelector((state) => state.data);
+  const {
+    selectedAudio,
+    isGettingAudioDetails,
+    isPlayingPlaylist,
+    currentIndex,
+    currentPlaylistLength,
+  } = useAppSelector((state) => state.data);
   const { favourites } = useAppSelector(selectCollection);
   const dispatch = useAppDispatch();
 
@@ -95,10 +101,9 @@ const Player = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(currentPosition);
-    console.log(selectedAudio?.lengthSeconds);
-  }, [currentPosition, selectedAudio?.lengthSeconds]);
+  const handlePlayNext = () => {
+    dispatch(playNextSong());
+  };
 
   return (
     <div className="player">
@@ -165,7 +170,7 @@ const Player = () => {
       <div
         className="controls"
         style={
-          !selectedAudio
+          !selectedAudio || isGettingAudioDetails
             ? {
                 filter: "brightness(40%)",
                 pointerEvents: "none",
@@ -173,7 +178,15 @@ const Player = () => {
             : {}
         }
       >
-        <button className="previous">
+        <button
+          className="previous"
+          disabled={
+            !isPlayingPlaylist ||
+            currentIndex === 0 ||
+            (currentPlaylistLength !== undefined &&
+              currentIndex === currentPlaylistLength - 1)
+          }
+        >
           <Image src={PreviousIcon} alt="Previous audio" />
         </button>
         {playing ? (
@@ -202,7 +215,11 @@ const Player = () => {
           </button>
         )}
 
-        <button className="next">
+        <button
+          className="next"
+          disabled={!isPlayingPlaylist}
+          onClick={handlePlayNext}
+        >
           <Image src={NextIcon} alt="next audio" />
         </button>
       </div>

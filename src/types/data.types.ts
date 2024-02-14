@@ -12,6 +12,7 @@ export interface IResults {
   isPlayingPlaylist: boolean;
   playlistIndex: number[];
   currentIndex?: number;
+  currentPlaylistLength?: number;
 }
 
 export enum CARD_VARIANT {

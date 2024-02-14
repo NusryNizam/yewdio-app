@@ -78,6 +78,11 @@ const dataSlice = createSlice({
   name: "data",
   initialState: initialState,
   reducers: {
+    clearPlayState: (state) => {
+      state.currentIndex = 0;
+      state.isPlayingPlaylist = false;
+      state.playlistIndex = [];
+    },
     setIsSearchOverlay: (
       state,
       action: PayloadAction<boolean>,
@@ -96,7 +101,17 @@ const dataSlice = createSlice({
         }
         state.playlistIndex = shuffleArray(indexes);
         state.currentIndex = 0;
+        state.isPlayingPlaylist = true;
+        state.currentPlaylistLength = favCount;
       }
+    },
+    playNextSong: (state) => {
+      if (
+        state.currentPlaylistLength &&
+        state.currentIndex !==
+          state.currentPlaylistLength - 1
+      )
+        state.currentIndex = (state.currentIndex ?? 0) + 1;
     },
   },
   extraReducers: (builder) => {
@@ -118,10 +133,12 @@ const dataSlice = createSlice({
       })
       .addCase(getAudioDetails.rejected, (state) => {
         state.isGettingAudioDetails = false;
+        clearPlayState();
       })
       .addCase(
         getAudioDetails.fulfilled,
         (state, action) => {
+          console.log("fulfilled");
           state.isGettingAudioDetails = false;
           state.selectedAudio = action.payload;
         },
@@ -129,7 +146,11 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setIsSearchOverlay, playFavouriteItems } =
-  dataSlice.actions;
+export const {
+  setIsSearchOverlay,
+  playFavouriteItems,
+  playNextSong,
+  clearPlayState,
+} = dataSlice.actions;
 
 export default dataSlice.reducer;

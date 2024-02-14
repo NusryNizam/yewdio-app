@@ -24,7 +24,7 @@ const Results = () => {
   } = useAppSelector((state) => state.data);
 
   const dispatch = useAppDispatch();
-  const [playAudio] = useFetchDetails();
+  const { playAudio } = useFetchDetails();
 
   const hideOverlay = () => {
     dispatch(setIsSearchOverlay(false));

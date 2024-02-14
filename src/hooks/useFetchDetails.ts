@@ -6,9 +6,9 @@ import { useAppDispatch } from "@/lib/hooks";
 import { debounce } from "lodash";
 import { useEffect, useRef } from "react";
 
-export const useFetchDetails = (): [
-  (videoId: string) => void,
-] => {
+export const useFetchDetails = (): {
+  playAudio: (videoId: string) => void;
+} => {
   const dispatch = useAppDispatch();
 
   const playAudio = (videoId: string) => {
@@ -18,7 +18,7 @@ export const useFetchDetails = (): [
 
   const debouncedGetDetails = useRef(
     debounce(
-      (videoId) => {
+      (videoId: string) => {
         dispatch(getAudioDetails(videoId));
       },
       400,
@@ -30,5 +30,5 @@ export const useFetchDetails = (): [
     return () => debouncedGetDetails.cancel();
   }, [debouncedGetDetails]);
 
-  return [playAudio];
+  return { playAudio };
 };

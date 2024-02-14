@@ -126,6 +126,9 @@ const ResultsCard = ({
           width={120}
           height={90}
         />
+        {variant === CARD_VARIANT.SINGLETON ? (
+          <div className="image-overlay"></div>
+        ) : null}
       </div>
       <div className="info-container">
         {title ? (
