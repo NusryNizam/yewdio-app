@@ -1,0 +1,21 @@
+@import "/src/app/variables.modules.scss";
+
+.popover-items-container {
+  .popover-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    width: 100%;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: $result-card-hover-color;
+    }
+
+    &:active {
+      background-color: $card-color-darker;
+    }
+  }
+}

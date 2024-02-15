@@ -25,6 +25,7 @@ const Card = ({
     >
       <div className="home-image-container">
         <Image
+          unoptimized={true}
           src={img ?? placeholder}
           alt={title}
           width={150}

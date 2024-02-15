@@ -1,6 +1,8 @@
 import {
   IAudioDetailsResponseDTO,
   ISearchResponseDTO,
+  Instances,
+  InvidiousData,
 } from "@/types/api.types";
 import { IResults } from "@/types/data.types";
 import { shuffleArray } from "@/utils/shuffleArray";
@@ -10,23 +12,30 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
+import toast from "react-hot-toast";
 import { api } from "./api";
+import { RootState } from "./store";
 
 const initialState: IResults = {
   isSearchingAudio: false,
   isGettingAudioDetails: false,
   isSearchOverlay: false,
+  isGettingInstances: false,
 
   isPlayingPlaylist: false,
   playlistIndex: [],
+  instances: [],
+  instanceURL: "",
 };
 
 export const searchAudio = createAsyncThunk(
   "data/search-audio",
-  async (searchTerm: string) => {
+  async (searchTerm: string, { getState }) => {
+    const url = (getState() as RootState).data.instanceURL;
+
     try {
       const response = await api.get<ISearchResponseDTO[]>(
-        `https://invidious.fdn.fr/api/v1/search?q=${searchTerm}`,
+        `${url}/api/v1/search?q=${searchTerm}`,
       );
 
       return response.data;
@@ -38,11 +47,12 @@ export const searchAudio = createAsyncThunk(
 
 export const getAudioDetails = createAsyncThunk(
   "data/get-audio-details",
-  async (vidId: string) => {
+  async (vidId: string, { getState }) => {
+    const url = (getState() as RootState).data.instanceURL;
     try {
       const response: AxiosResponse<IAudioDetailsResponseDTO> =
         await api.get<IAudioDetailsResponseDTO>(
-          `https://invidious.fdn.fr/api/v1/videos/${vidId}`,
+          `${url}/api/v1/videos/${vidId}`,
         );
 
       const {
@@ -68,6 +78,39 @@ export const getAudioDetails = createAsyncThunk(
         adaptiveFormats,
         recommendedVideos,
       };
+    } catch (error) {
+      toast.error(
+        "Coudn't get audio details. Please try again later",
+      );
+      throw new Error("Error");
+    }
+  },
+);
+
+export const getInstances = createAsyncThunk(
+  "data/get-instances",
+  async () => {
+    try {
+      const response: AxiosResponse<InvidiousData[]> =
+        await api.get<InvidiousData[]>(
+          `https://api.invidious.io/instances.json?sort_by=api`,
+        );
+
+      let transformedData: Instances[] = response.data.map(
+        ([_, value]) => ({
+          cors: value.cors,
+          api: value.api,
+          type: value.type,
+          uri: value.uri,
+        }),
+      );
+
+      transformedData = transformedData.filter(
+        (data) =>
+          data.cors && data.api && data.type === "https",
+      );
+
+      return transformedData;
     } catch (error) {
       throw new Error("Error");
     }
@@ -143,6 +186,19 @@ const dataSlice = createSlice({
           state.selectedAudio = action.payload;
         },
       );
+
+    builder
+      .addCase(getInstances.pending, (state) => {
+        state.isGettingInstances = true;
+      })
+      .addCase(getInstances.rejected, (state) => {
+        state.isGettingInstances = false;
+      })
+      .addCase(getInstances.fulfilled, (state, action) => {
+        state.isGettingInstances = false;
+        state.instances = action.payload;
+        state.instanceURL = action.payload[0].uri;
+      });
   },
 });
 

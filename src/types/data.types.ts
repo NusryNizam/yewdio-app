@@ -1,6 +1,7 @@
 import {
   IAudioDetailsResponseDTO,
   ISearchResponseDTO,
+  Instances,
 } from "./api.types";
 
 export interface IResults {
@@ -10,9 +11,12 @@ export interface IResults {
   selectedAudio?: IAudioDetailsResponseDTO;
   isSearchOverlay: boolean;
   isPlayingPlaylist: boolean;
+  isGettingInstances: boolean;
   playlistIndex: number[];
   currentIndex?: number;
   currentPlaylistLength?: number;
+  instances: Instances[];
+  instanceURL: string;
 }
 
 export enum CARD_VARIANT {

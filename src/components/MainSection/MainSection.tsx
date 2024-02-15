@@ -17,7 +17,7 @@ const MainSection = () => {
   const { library, favourites } = useAppSelector(
     selectCollection,
   );
-  const [playAudio] = useFetchDetails();
+  const { playAudio } = useFetchDetails();
 
   return (
     <section className="main-section">

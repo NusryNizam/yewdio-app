@@ -90,7 +90,7 @@ const Results = () => {
                   <ResultsCard
                     key={videoId}
                     onClick={() => playAudio(videoId)}
-                    addToLibrary={() =>
+                    addToLibraryExt={() =>
                       handleAddToLibrary(result)
                     }
                     title={title}
@@ -101,9 +101,10 @@ const Results = () => {
                       (videoThumbnails ?? []).filter(
                         (thumb) =>
                           thumb.quality ===
-                          THUMBNAIL_QUALITY.MEDIUM,
+                          THUMBNAIL_QUALITY.MIDDLE,
                       )[0]?.url
                     }
+                    videoThumbnails={videoThumbnails}
                   />
                 );
               })

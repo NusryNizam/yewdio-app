@@ -16,7 +16,7 @@ import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 
 const Library = () => {
   const { library } = useAppSelector(selectCollection);
-  const [playAudio] = useFetchDetails();
+  const { playAudio } = useFetchDetails();
 
   return (
     <section className="main-section">
@@ -42,6 +42,8 @@ const Library = () => {
                 duration={audio.lengthSeconds}
                 onClick={() => playAudio(audio.videoId)}
                 variant={CARD_VARIANT.DETAILED}
+                videoId={audio.videoId}
+                videoThumbnails={audio.videoThumbnails}
               />
             ))
         ) : (

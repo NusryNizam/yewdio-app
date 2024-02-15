@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  getInstances,
   searchAudio,
   setIsSearchOverlay,
 } from "@/lib/dataSlice";
@@ -25,6 +26,10 @@ const Header = ({ heading }: HeaderProps) => {
   );
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getInstances());
+  }, [dispatch]);
 
   const handleSearch = (
     e: React.ChangeEvent<HTMLInputElement>,

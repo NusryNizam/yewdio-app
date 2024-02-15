@@ -138,6 +138,9 @@ const Player = () => {
           }
           onClick={toggleAudio}
           variant={CARD_VARIANT.SINGLETON}
+          videoThumbnails={
+            selectedAudio?.videoThumbnails ?? []
+          }
         />
       </div>
       {selectedAudio && !isGettingAudioDetails ? (

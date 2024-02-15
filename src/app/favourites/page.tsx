@@ -73,6 +73,8 @@ const Favourites = () => {
                 duration={audio.lengthSeconds}
                 onClick={() => {}}
                 variant={CARD_VARIANT.DETAILED}
+                videoId={audio.videoId}
+                videoThumbnails={audio.videoThumbnails}
               />
             ))
         ) : (

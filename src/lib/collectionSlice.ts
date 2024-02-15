@@ -62,6 +62,22 @@ const collectionSlice = createSlice({
         toast.error("Item already in library");
       }
     },
+    removeFromLibrary: (
+      state,
+      action: PayloadAction<ISearchResponseDTO>,
+    ) => {
+      const index = state.library.findIndex(
+        (libItem) =>
+          libItem.videoId === action.payload.videoId,
+      );
+
+      if (index != -1) {
+        state.library = state.library.filter(
+          (item) => item.videoId !== action.payload.videoId,
+        );
+        toast.success("Removed from library");
+      }
+    },
   },
 });
 
@@ -69,6 +85,7 @@ export const {
   addToLibrary,
   addToFavourites,
   removeFromFavourites,
+  removeFromLibrary,
 } = collectionSlice.actions;
 
 export default collectionSlice.reducer;
