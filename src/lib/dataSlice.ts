@@ -181,7 +181,6 @@ const dataSlice = createSlice({
       .addCase(
         getAudioDetails.fulfilled,
         (state, action) => {
-          console.log("fulfilled");
           state.isGettingAudioDetails = false;
           state.selectedAudio = action.payload;
         },

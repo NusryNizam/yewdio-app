@@ -34,7 +34,6 @@ export const useAudio = (): [
       audio.current.play();
       setPlaying(true);
       interval = setInterval(() => {
-        console.log("interval");
         setCurrentPosition(audio.current.currentTime);
       }, 1000);
 
