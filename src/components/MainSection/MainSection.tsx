@@ -10,13 +10,8 @@ import Card from "../Card/Card";
 import EmptyState from "../EmptyState/EmptyState";
 import "./MainSection.scss";
 
-import { Metadata } from "next";
 import Image from "next/image";
 import RightArrowIcon from "../../../public/icons/icon-right-arrow.svg";
-
-export const metadata: Metadata = {
-  title: 'Yewdio | Home',
-};
 
 const MainSection = () => {
   const { library, favourites } = useAppSelector(

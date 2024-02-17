@@ -16,15 +16,11 @@ import {
   THUMBNAIL_QUALITY,
 } from "@/types/api.types";
 import { CARD_VARIANT } from "@/types/data.types";
-import { Metadata } from "next";
 import { useEffect } from "react";
 import Header from "../_components/header/Header";
 import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
-export const metadata: Metadata = {
-  title: 'Yewdio | Favourites',
- };
 
 const Favourites = () => {
   const { playAudio } = useFetchDetails();

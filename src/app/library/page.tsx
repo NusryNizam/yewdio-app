@@ -12,12 +12,7 @@ import { CARD_VARIANT } from "@/types/data.types";
 import Header from "../_components/header/Header";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
-import { Metadata } from "next";
 import PlayAllButton from "../_components/play-all-button/PlayAllButton";
-
-export const metadata: Metadata = {
-  title: 'Yewdio | Library',
- };
 
 const Library = () => {
   const { library } = useAppSelector(selectCollection);
