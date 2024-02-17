@@ -1,17 +1,8 @@
 const hostnames = ["invidious.fdn.fr"];
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: hostnames.map((hostname) => ({
-      protocol: "https",
-      hostname: hostname,
-    })),
-  },
-  compiler: {
-    // ssr and displayName are configured by default
-    styledComponents: true,
-  },
-};
+const nextConfig = {};
 
-export default nextConfig;
+import withPWA from "next-pwa";
+
+export default withPWA({ ...nextConfig, dest: "public" });
