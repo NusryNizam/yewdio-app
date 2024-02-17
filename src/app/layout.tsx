@@ -99,7 +99,11 @@ export default function RootLayout({
           name="msapplication-TileImage"
           content="/ms-icon-144x144.png"
         />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#151515" />
+        <link
+          rel="manifest"
+          href="@/../public/manifest.json"
+        />
       </Head>
       <body className={`${inter.className}`}>
         <main className="main">

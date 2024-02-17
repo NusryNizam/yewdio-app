@@ -78,7 +78,10 @@ export default function Document() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="../../public" href="/manifest.json" />
+        <link
+          rel="manifest"
+          href="@/../public/manifest.json"
+        />
         <meta
           name="msapplication-TileColor"
           content="#151515"
