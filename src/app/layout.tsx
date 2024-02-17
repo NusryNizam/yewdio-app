@@ -29,7 +29,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#151515" />
         <meta name="description" content="Listen to YouTube as audio on-the-go." />
         <link rel="manifest" href="./manifest.webmanifest" />
-        <title>Yewdio: Listen to YouTube as audio.</title>
       </Head>
       <body className={`${inter.className}`}>
         <main className="main">

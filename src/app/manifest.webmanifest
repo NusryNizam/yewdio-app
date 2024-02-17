@@ -29,6 +29,12 @@
           "sizes":"512x512",
           "type":"image/png",
           "purpose": "maskable"
+        },
+        {
+          "src":"../../public/app-icons/icon-512x512.svg",
+          "sizes":"512x512",
+          "type":"image/svg+xml",
+          "purpose": "maskable any" 
         }
       ]
     }
