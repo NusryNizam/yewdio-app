@@ -2,13 +2,13 @@
 
 .results-container {
   position: absolute;
-  top: 4.25rem;
+  top: $spacing-10;
   right: 0;
   border-radius: 1rem;
   min-height: 500px;
   background-color: black;
   animation: appear 350ms ease-in-out;
-  padding: 1rem;
+  padding: $spacing-05;
   min-width: 30rem;
   max-height: 24rem;
   max-width: 30rem;
@@ -27,7 +27,7 @@
 .results-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: $spacing-05;
 }
 
 @keyframes appear {

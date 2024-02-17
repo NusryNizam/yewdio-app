@@ -3,19 +3,20 @@
 .player {
   background-color: $foreground-color;
   border-radius: 0 0 $border-radius $border-radius;
-  padding: 1rem 2rem;
-  padding-top: calc(1rem + 2px);
+  padding: $spacing-05 $spacing-07;
+  padding-top: calc($spacing-05 + 2px);
   position: relative;
   display: flex;
   align-items: center;
 
   @media (max-width: $md) {
-    padding: 1rem 1.25rem;
+    padding: $spacing-05;
+    border-radius: 0;
   }
 
   .player-spinner {
     position: absolute;
-    left: 2rem;
+    left: $spacing-07;
     background-color: transparent;
     aspect-ratio: 1;
     width: 90px;
@@ -23,7 +24,7 @@
     z-index: 1;
 
     @media (max-width: $md) {
-      left: 1rem;
+      left: $spacing-05;
     }
   }
 }
@@ -39,7 +40,7 @@
 
 .slider {
   position: absolute;
-  top: 0rem;
+  top: 0;
   right: 0;
   left: 0;
   border-radius: 0;
@@ -54,9 +55,9 @@
 
 .controls {
   display: flex;
-  gap: 2rem;
+  gap: $spacing-07;
   margin-left: auto;
-  padding: 1rem;
+  padding: $spacing-05;
   flex-shrink: 0;
 
   .play-pause-icon {
@@ -97,7 +98,7 @@
 }
 
 .icon-favourite-container {
-  padding-inline: 1.5rem;
+  padding-inline: $spacing-06;
 
   @media (max-width: $md) {
     display: none;

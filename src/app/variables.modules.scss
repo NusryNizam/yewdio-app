@@ -14,12 +14,26 @@ $sm: 420px;
 $gap-1: 1rem;
 
 $player-height: 120px;
+$player-height-small: 80px;
 $nav-height: 64px;
+$nav-height-small: 56px;
 
 $hover-color: rgba(46, 40, 40, 0.04);
 $result-card-hover-color: rgba(255, 255, 255, 0.1);
 
 $text-light: #7a7a7a;
+
+$spacing-01: 0.125rem;
+$spacing-02: 0.25rem;
+$spacing-03: 0.5rem;
+$spacing-04: 0.75rem;
+$spacing-05: 1rem;
+$spacing-06: 1.5rem;
+$spacing-07: 2rem;
+$spacing-08: 2.5rem;
+$spacing-09: 3rem;
+$spacing-10: 4rem;
+$spacing-11: 5rem;
 
 :export {
   accentColor: $accent-color;
@@ -34,10 +48,23 @@ $text-light: #7a7a7a;
   light-color: $light-color;
   foreground-color: $foreground-color;
   player-height: $player-height;
+  player-height-small: $player-height-small;
   nav-height: $nav-height;
+  nav-height-small: $nav-height-small;
   results-card-color: $results-card-color;
   card-color: $card-color;
   card-color-darker: $card-color-darker;
   text-light: $text-light;
   result-card-hover-color: $result-card-hover-color;
+  spacing-01: $spacing-01;
+  spacing-02: $spacing-02;
+  spacing-03: $spacing-03;
+  spacing-04: $spacing-04;
+  spacing-05: $spacing-05;
+  spacing-06: $spacing-06;
+  spacing-07: $spacing-07;
+  spacing-08: $spacing-08;
+  spacing-09: $spacing-09;
+  spacing-10: $spacing-10;
+  spacing-11: $spacing-11;
 }

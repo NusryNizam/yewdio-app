@@ -12,13 +12,19 @@
     height: 100vh;
     height: 100dvh;
   }
+
+  @media (max-width: $md) {
+    grid-template-rows: 1fr $nav-height-small;
+    gap: 0;
+    padding: 0;
+  }
 }
 
 .main-section {
   background-color: $element-bg;
   width: 100%;
   border-radius: $border-radius $border-radius 0 0;
-  padding: 2rem;
+  padding: $spacing-07;
   max-height: calc(100vh - (2 * $gap-1) - $player-height);
   overflow: hidden auto;
 
@@ -31,12 +37,25 @@
   }
 
   @media (max-width: $md) {
-    padding: 1.25rem;
+    max-height: calc(
+      100vh - $player-height-small - $nav-height-small
+    );
+    padding: $spacing-05;
+    border-radius: 0;
+  }
+
+  @media (max-width: $sm) {
+    padding: $spacing-06;
+    grid-row: 1/2;
+    max-height: calc(
+      100vh - $player-height-small - $nav-height-small
+    );
+    padding: $spacing-05;
   }
 
   .card-container {
     display: grid;
-    gap: 1rem;
+    gap: $spacing-05;
     grid-template-columns: repeat(3, 1fr);
 
     @media (max-width: $lg) {
@@ -45,6 +64,10 @@
 
     @media (max-width: $md) {
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media (max-width: $sm) {
+      gap: $spacing-04;
     }
   }
 }
@@ -55,6 +78,10 @@
   grid-template-rows: 1fr $player-height;
   grid-template-columns: 100%;
   position: relative;
+
+  @media (max-width: $md) {
+    grid-template-rows: 1fr $player-height-small;
+  }
 }
 
 .children {

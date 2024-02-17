@@ -2,9 +2,9 @@
 
 .play-all-container {
   position: absolute;
-  bottom: calc(1.5rem + $player-height);
-  left: 2rem;
-  right: 2rem;
+  bottom: calc($spacing-06 + $player-height);
+  left: $spacing-07;
+  right: $spacing-07;
   display: flex;
 
   @media (max-width: $lg) {
@@ -13,8 +13,9 @@
 
   @media (max-width: $md) {
     justify-content: right;
-    left: 1rem;
-    right: 1rem;
+    left: $spacing-05;
+    right: $spacing-06;
+    bottom: calc($spacing-05 + $player-height-small);
   }
 
   .play-all {
@@ -26,8 +27,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.1rem 0.6rem 0.9rem;
+    gap: $spacing-03;
+    padding: $spacing-03 $spacing-05 $spacing-03 $spacing-04;
     fill: black;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.555);
     transition: all 250ms ease-in-out;
@@ -44,6 +45,11 @@
 
     &:active {
       scale: 0.99;
+    }
+
+    @media (max-width: $md) {
+      padding: $spacing-03 $spacing-04 $spacing-03
+        $spacing-03;
     }
   }
 }

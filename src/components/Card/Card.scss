@@ -3,14 +3,16 @@
 .card {
   border-radius: $card-radius;
   background-color: $card-color;
-  // min-width: 180px;
-  padding: 0.625rem;
   transition: all 150ms ease-in-out;
   border: 1px solid transparent;
+  padding: $spacing-03;
+  display: flex;
+  flex-direction: column;
+  height: auto;
 
   &-title {
     text-align: left;
-    margin-block: 0.625rem;
+    margin-block: $spacing-03;
     max-width: 140px;
 
     overflow: hidden;
@@ -38,14 +40,27 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    width: 100%;
 
     img {
       width: auto;
       height: auto;
-      max-width: 160px;
-      max-height: 160px;
-      scale: 1.8;
+      max-width: 128px;
+      max-height: 128px;
+      scale: 2;
       pointer-events: none;
+    }
+  }
+
+  @media (max-width: $sm) {
+    padding: 0;
+
+    .home-image-container {
+      border-radius: 6px 6px 0 0;
+    }
+
+    .card-title {
+      padding-inline: $spacing-02;
     }
   }
 }

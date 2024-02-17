@@ -198,6 +198,9 @@ const ResultsCard = ({
                     <div
                       className={`image-container-readonly`}
                     >
+                      {/* <div className="duration font-body-sm-rg">
+                        {secondsToHMS(duration)}
+                      </div> */}
                       <Image
                         unoptimized={true}
                         src={
@@ -206,8 +209,8 @@ const ResultsCard = ({
                             : placeholder
                         }
                         alt={`Thumbnail - ${title}`}
-                        width={120}
-                        height={90}
+                        width={80}
+                        height={80}
                       />
                       {variant ===
                       CARD_VARIANT.SINGLETON ? (
@@ -227,9 +230,6 @@ const ResultsCard = ({
                       )}
                       <div className="result-author">
                         {author}
-                      </div>
-                      <div className="duration font-body-sm-rg">
-                        {secondsToHMS(duration)}
                       </div>
                     </div>
                   </div>

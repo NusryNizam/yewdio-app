@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: $spacing-10;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -14,7 +14,7 @@
   &::after {
     content: "";
     position: absolute;
-    inset: -2rem;
+    inset: -$spacing-07;
     height: 108px;
     z-index: -1;
     background-color: #22222298;
@@ -25,12 +25,12 @@
   @media (max-width: $md) {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 0;
+    margin-bottom: $spacing-05;
 
     &::after {
       height: 160px;
-      right: -1rem;
-      left: -1rem;
+      right: -$spacing-05;
+      left: -$spacing-05;
     }
   }
 
@@ -46,31 +46,41 @@
 }
 
 .heading {
-  font-size: 40px;
+  font-size: 33px;
   font-weight: 700;
-  padding-right: 1rem;
+  padding-right: $spacing-05;
 
   @media (max-width: $md) {
-    font-size: 33px;
+    font-size: 28px;
     font-weight: 700;
   }
 }
 
-.search-input {
-  border-radius: 40px;
-  padding-inline: 1.5rem;
-  background-color: $light-color;
+.search-input-container {
   min-width: 30rem;
-  height: 3.25rem;
-  z-index: 99;
 
-  :focus-visible {
-    outline: 1px solid $accent-color;
+  .search-input {
+    border-radius: 40px;
+    padding-inline: $spacing-06;
+    background-color: $light-color;
+    min-width: 30rem;
+    height: 2.75rem;
+    z-index: 99;
+
+    :focus-visible {
+      outline: 1px solid $accent-color;
+    }
+
+    @media (max-width: $md) {
+      width: 100%;
+      margin-block: $spacing-01 $spacing-02;
+      min-width: unset;
+    }
   }
 
   @media (max-width: $md) {
     width: 100%;
-    margin-block: 0.625rem 1.25rem;
+    margin-block: $spacing-03 $spacing-05;
     min-width: unset;
   }
 }

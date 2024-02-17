@@ -59,23 +59,26 @@ const Header = ({ heading }: HeaderProps) => {
 
   return (
     <div className="header">
-      <h1 className={`${dmSans.className} heading`}>
+      <h1 className={`${dmSans.className} heading font-h3`}>
         {heading}
       </h1>
-      <input
-        type="text"
-        alt="Search for audio"
-        placeholder="Search for audio"
-        className="search-input"
-        value={searchTerm}
-        onChange={handleSearch}
-        onFocus={() => dispatch(setIsSearchOverlay(true))}
-        onKeyUp={(e) =>
-          e.key === "Escape"
-            ? dispatch(setIsSearchOverlay(false))
-            : null
-        }
-      />
+      <div className="search-input-container">
+        <input
+          type="text"
+          alt="Search for audio"
+          placeholder="Search for audio"
+          className="search-input"
+          value={searchTerm}
+          onChange={handleSearch}
+          onFocus={() => dispatch(setIsSearchOverlay(true))}
+          onKeyUp={(e) =>
+            e.key === "Escape"
+              ? dispatch(setIsSearchOverlay(false))
+              : null
+          }
+          onBlur={() => dispatch(setIsSearchOverlay(false))}
+        />
+      </div>
       {isSearchOverlay ? <Results /> : null}
     </div>
   );

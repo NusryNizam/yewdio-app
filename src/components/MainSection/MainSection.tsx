@@ -22,7 +22,9 @@ const MainSection = () => {
   return (
     <section className="main-section">
       <Header heading="Home" />
-      <h2 className="font-h3 subtitle">Your Library</h2>
+      <h2 className="font-body-lg-md subtitle">
+        Your Library
+      </h2>
       <div className="main-card-container">
         {library.length > 0 ? (
           <>
@@ -59,7 +61,9 @@ const MainSection = () => {
         )}
       </div>
 
-      <h2 className="font-h3 subtitle">Favourites</h2>
+      <h2 className="font-body-lg-md subtitle">
+        Favourites
+      </h2>
       <div className="main-card-container">
         {favourites.length > 0 ? (
           <>

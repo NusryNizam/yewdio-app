@@ -10,7 +10,7 @@ const PlayAllButton = ({ onClick }: PlayAllButtonProps) => {
     <div className="play-all-container">
       <button className="play-all" onClick={onClick}>
         <Image src={PlayIcon} alt="play all" />
-        <span className="font-body-lg-md">Play All</span>
+        <span className="font-body-md">Play All</span>
       </button>
     </div>
   );

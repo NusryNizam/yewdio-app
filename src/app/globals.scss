@@ -5,18 +5,17 @@
 @import "/src/app/variables.modules.scss";
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --foreground-rgb: 255, 255, 255;
+//     --background-start-rgb: 0, 0, 0;
+//     --background-end-rgb: 0, 0, 0;
+//   }
+// }
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -144,5 +143,10 @@ body {
   @media (max-width: $lg) {
     height: calc(100vh - 2rem - 5rem);
     height: calc(100dvh - 2rem - 5rem);
+  }
+
+  @media (max-width: $md) {
+    height: calc(100vh - $nav-height-small);
+    height: calc(100dvh - $nav-height-small);
   }
 }

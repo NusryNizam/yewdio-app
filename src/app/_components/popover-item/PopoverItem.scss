@@ -3,10 +3,10 @@
 .popover-items-container {
   .popover-item {
     display: flex;
-    gap: 1.25rem;
+    gap: $spacing-06;
     align-items: center;
-    padding-block: 1rem;
-    padding-inline: 1rem;
+    padding-block: $spacing-05;
+    padding-inline: $spacing-05;
     width: 100%;
     border-radius: $border-radius;
 
