@@ -16,12 +16,8 @@ import ResultsCard from "../results-card/ResultsCard";
 import "./Results.scss";
 
 const Results = () => {
-  const {
-    results,
-    isSearchingAudio,
-    isSearchOverlay,
-    selectedAudio,
-  } = useAppSelector((state) => state.data);
+  const { results, isSearchingAudio, isSearchOverlay } =
+    useAppSelector((state) => state.data);
 
   const dispatch = useAppDispatch();
   const { playAudio } = useFetchDetails();
@@ -29,25 +25,6 @@ const Results = () => {
   const hideOverlay = () => {
     dispatch(setIsSearchOverlay(false));
   };
-
-  // const playAudio = (videoId: string) => {
-  //   dispatch(setIsSearchOverlay(false));
-  //   debouncedGetDetails(videoId);
-  // };
-
-  // const debouncedGetDetails = useRef(
-  //   debounce(
-  //     (videoId) => {
-  //       dispatch(getAudioDetails(videoId));
-  //     },
-  //     400,
-  //     { leading: true, trailing: false },
-  //   ),
-  // ).current;
-
-  // useEffect(() => {
-  //   return () => debouncedGetDetails.cancel();
-  // }, [debouncedGetDetails]);
 
   const handleAddToLibrary = (data: ISearchResponseDTO) => {
     dispatch(addToLibrary(data));
@@ -89,7 +66,10 @@ const Results = () => {
                 return (
                   <ResultsCard
                     key={videoId}
-                    onClick={() => playAudio(videoId)}
+                    onClick={() => {
+                      playAudio(videoId);
+                      dispatch(setIsSearchOverlay(false));
+                    }}
                     addToLibraryExt={() =>
                       handleAddToLibrary(result)
                     }

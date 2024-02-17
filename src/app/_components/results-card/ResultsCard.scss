@@ -5,7 +5,6 @@
     background-color: $results-card-color;
     max-width: 100%;
     border-radius: 0.5rem;
-    // height: 6.25rem;
     display: flex;
     gap: $spacing-01;
     border: 1px solid rgba(255, 255, 255, 0.008);
@@ -18,7 +17,6 @@
 
     .image-container {
       aspect-ratio: 1;
-      // min-width: 6rem;
       width: 5rem;
       overflow: hidden;
       border-radius: 0.5rem 0 0 0.5rem;
@@ -102,7 +100,6 @@
     }
 
     .image-container {
-      // min-width: 4rem;
       max-height: 4rem;
       border-radius: 0;
 

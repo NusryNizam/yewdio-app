@@ -15,6 +15,9 @@ import { useEffect, useRef, useState } from "react";
 import Results from "../results/Results";
 import "./Header.scss";
 
+import CloseIcon from "@/../public/icons/icon-close.svg";
+import Image from "next/image";
+
 type HeaderProps = {
   heading: string;
 };
@@ -57,6 +60,11 @@ const Header = ({ heading }: HeaderProps) => {
     return () => debouncedSearch.cancel();
   }, [debouncedSearch]);
 
+  const handleClear = () => {
+    setSearchTerm("");
+    dispatch(setIsSearchOverlay(false));
+  };
+
   return (
     <div className="header">
       <h1 className={`${dmSans.className} heading font-h3`}>
@@ -76,8 +84,18 @@ const Header = ({ heading }: HeaderProps) => {
               ? dispatch(setIsSearchOverlay(false))
               : null
           }
-          onBlur={() => dispatch(setIsSearchOverlay(false))}
         />
+        {searchTerm ? (
+          <button
+            onClick={handleClear}
+            className="clear-icon"
+          >
+            <Image
+              src={CloseIcon}
+              alt="Clear search text"
+            />
+          </button>
+        ) : null}
       </div>
       {isSearchOverlay ? <Results /> : null}
     </div>

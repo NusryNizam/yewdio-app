@@ -81,7 +81,6 @@ const ResultsCard = ({
     >,
   ) => {
     event.stopPropagation();
-    // TODO: More optoins
   };
 
   const isInLibary = useMemo(

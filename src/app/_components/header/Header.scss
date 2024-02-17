@@ -58,6 +58,8 @@
 
 .search-input-container {
   min-width: 30rem;
+  position: relative;
+  z-index: 99;
 
   .search-input {
     border-radius: 40px;
@@ -82,5 +84,19 @@
     width: 100%;
     margin-block: $spacing-03 $spacing-05;
     min-width: unset;
+  }
+}
+
+.clear-icon {
+  position: absolute;
+  right: $spacing-02;
+  top: $spacing-02;
+  padding: $spacing-03;
+  padding-right: $spacing-05;
+  border-radius: 0 100% 100% 0;
+
+  img {
+    width: 18px;
+    height: 18px;
   }
 }
