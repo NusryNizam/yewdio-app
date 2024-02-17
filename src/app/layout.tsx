@@ -1,6 +1,6 @@
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { inter } from "@/utils/fonts";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import StoreProvider from "./StoreProvider";
@@ -10,6 +10,12 @@ import "./main.scss";
 
 export const viewport: Viewport = {
   themeColor: "#151515",
+};
+
+export const metadata: Metadata = {
+  title: 'Yewdio',
+  description:
+    'Listen to YouTube as audio'
 };
 
 export default function RootLayout({
