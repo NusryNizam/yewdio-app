@@ -51,10 +51,10 @@
           "density":"4.0"
         },
         {
-          "src":"../../public/app-icons/android-icon-192x192.png",
+          "src":"../../public/app-icons/maskable_icon_x512.png",
           "sizes":"512x512",
           "type":"image/png",
-          "purpose":"maskable"
+          "purpose": "maskable"
         }
       ]
     }

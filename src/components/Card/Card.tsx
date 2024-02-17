@@ -19,7 +19,6 @@ const Card = ({
 }: CardProps) => {
   return (
     <button
-      role="listitem"
       className="card"
       onClick={onClick}
     >

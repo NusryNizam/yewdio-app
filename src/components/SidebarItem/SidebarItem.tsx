@@ -27,6 +27,7 @@ const SidebarItem = ({
       className={`sidebar-item font-body-md ${
         inter.className
       } ${isActive ? "isActive" : null}`}
+      title={name}
     >
       <Image
         src={isActive ? SelectedIcon : Icon}

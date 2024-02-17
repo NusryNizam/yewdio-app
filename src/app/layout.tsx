@@ -8,29 +8,6 @@ import Player from "./_components/player/Player";
 import "./globals.scss";
 import "./main.scss";
 
-// const APP_NAME = "Yewdio";
-// const APP_DEFAULT_TITLE = "Yewdio";
-// const APP_TITLE_TEMPLATE = "Yewdio";
-// const APP_DESCRIPTION =
-//   "Listen to YouTube as audio on-the-go";
-
-// // export const metadata: Metadata = {
-// //   applicationName: APP_NAME,
-// //   title: {
-// //     default: APP_DEFAULT_TITLE,
-// //     template: APP_TITLE_TEMPLATE,
-// //   },
-// //   description: APP_DESCRIPTION,
-// //   appleWebApp: {
-// //     capable: true,
-// //     statusBarStyle: "default",
-// //     title: APP_DEFAULT_TITLE,
-// //   },
-// //   formatDetection: {
-// //     telephone: false,
-// //   },
-// // };
-
 export const viewport: Viewport = {
   themeColor: "#151515",
 };
@@ -41,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <Head>
         <link
           rel="apple-touch-icon"
@@ -112,6 +89,12 @@ export default function RootLayout({
           sizes="16x16"
           href="../../public/app-icons/favicon-16x16.png"
         />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="../../public/app-icons/maskable_icon_x512.png"
+        />
         <meta
           name="msapplication-TileColor"
           content="#ffffff"
@@ -121,7 +104,9 @@ export default function RootLayout({
           content="/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#151515" />
+        <meta name="description" content="Listen to YouTube as audio on-the-go." />
         <link rel="manifest" href="./manifest.webmanifest" />
+        <title>Yewdio: Listen to YouTube as audio.</title>
       </Head>
       <body className={`${inter.className}`}>
         <main className="main">
