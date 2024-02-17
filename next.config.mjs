@@ -1,8 +1,10 @@
-const hostnames = ["invidious.fdn.fr"];
+import withSerwistInit from "@serwist/next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+});
 
-import withPWA from "next-pwa";
-
-export default withPWA({ ...nextConfig, dest: "public" });
+export default withSerwist({
+  // Your Next.js config
+});

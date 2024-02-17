@@ -1,6 +1,6 @@
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { inter } from "@/utils/fonts";
-import type { Metadata } from "next";
+import type { Viewport } from "next";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import StoreProvider from "./StoreProvider";
@@ -8,9 +8,31 @@ import Player from "./_components/player/Player";
 import "./globals.scss";
 import "./main.scss";
 
-export const metadata: Metadata = {
-  title: "Yewdio",
-  description: "Listen to YouTube as audio",
+// const APP_NAME = "Yewdio";
+// const APP_DEFAULT_TITLE = "Yewdio";
+// const APP_TITLE_TEMPLATE = "Yewdio";
+// const APP_DESCRIPTION =
+//   "Listen to YouTube as audio on-the-go";
+
+// // export const metadata: Metadata = {
+// //   applicationName: APP_NAME,
+// //   title: {
+// //     default: APP_DEFAULT_TITLE,
+// //     template: APP_TITLE_TEMPLATE,
+// //   },
+// //   description: APP_DESCRIPTION,
+// //   appleWebApp: {
+// //     capable: true,
+// //     statusBarStyle: "default",
+// //     title: APP_DEFAULT_TITLE,
+// //   },
+// //   formatDetection: {
+// //     telephone: false,
+// //   },
+// // };
+
+export const viewport: Viewport = {
+  themeColor: "#151515",
 };
 
 export default function RootLayout({
@@ -90,7 +112,6 @@ export default function RootLayout({
           sizes="16x16"
           href="../../public/app-icons/favicon-16x16.png"
         />
-        <link rel="manifest" href="/manifest.json" />
         <meta
           name="msapplication-TileColor"
           content="#ffffff"
@@ -100,10 +121,7 @@ export default function RootLayout({
           content="/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#151515" />
-        <link
-          rel="manifest"
-          href="@/../public/manifest.json"
-        />
+        <link rel="manifest" href="./manifest.webmanifest" />
       </Head>
       <body className={`${inter.className}`}>
         <main className="main">
