@@ -13,7 +13,7 @@ import {
 } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import toast from "react-hot-toast";
-import { api } from "./api";
+import api from "./api";
 import { RootState } from "./store";
 
 const initialState: IResults = {

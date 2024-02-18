@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 export const useAudio = (): [
   boolean,
@@ -18,6 +19,12 @@ export const useAudio = (): [
     setCurrentPosition(0);
   };
 
+  const handleError = (e: any) => {
+    toast.error(
+      "YouTube doesn't support certain types of audio. Please try another one.",
+    );
+  };
+
   const load = (url: string) => {
     setSrc(url);
   };
@@ -27,12 +34,13 @@ export const useAudio = (): [
 
     if (src) {
       audio.current.src = src;
-      audio.current.play();
+      audio.current.play().catch((e) => handleError(e));
       setPlaying(true);
       interval = setInterval(() => {
         setCurrentPosition(audio.current.currentTime);
       }, 1000);
 
+      // audio.current.onerror = (e) => handleError(e);
       audio.current.onended = () =>
         handleAudioEnded(interval);
     }
