@@ -1,3 +1,4 @@
+import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { inter } from "@/utils/fonts";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -37,25 +38,27 @@ export default function RootLayout({
         />
       </Head>
       <body className={`${inter.className}`}>
-        <main className="main">
-          <Sidebar />
-          <StoreProvider>
-            <div className="right-content">
-              <div className="children">{children}</div>
-              <Player />
-            </div>
-          </StoreProvider>
-          <Toaster
-            toastOptions={{
-              style: {
-                borderRadius: "10px",
-                background: "#333",
-                color: "#fff",
-              },
-            }}
-          />
-          <SpeedInsights />
-        </main>
+        <ErrorBoundary>
+          <main className="main">
+            <Sidebar />
+            <StoreProvider>
+              <div className="right-content">
+                <div className="children">{children}</div>
+                <Player />
+              </div>
+            </StoreProvider>
+            <Toaster
+              toastOptions={{
+                style: {
+                  borderRadius: "10px",
+                  background: "#333",
+                  color: "#fff",
+                },
+              }}
+            />
+            <SpeedInsights />
+          </main>
+        </ErrorBoundary>
       </body>
     </html>
   );
