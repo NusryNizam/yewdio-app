@@ -2,7 +2,10 @@
 
 import EmptyState from "@/components/EmptyState/EmptyState";
 import { useFetchDetails } from "@/hooks/useFetchDetails";
-import { useAppSelector } from "@/lib/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "@/lib/hooks";
 import { selectCollection } from "@/selectors/collection.selector";
 import {
   AUDIO_TYPES,
@@ -12,11 +15,37 @@ import { CARD_VARIANT } from "@/types/data.types";
 import Header from "../_components/header/Header";
 import ResultsCard from "../_components/results-card/ResultsCard";
 
+import {
+  getAudioDetails,
+  playFavouriteItems,
+} from "@/lib/dataSlice";
+import { useEffect } from "react";
 import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 
 const Library = () => {
   const { library } = useAppSelector(selectCollection);
   const { playAudio } = useFetchDetails();
+  const dispatch = useAppDispatch();
+  const { playlistIndex, currentIndex } = useAppSelector(
+    (state) => state.data,
+  );
+
+  const playLibrary = () => {
+    if (library.length > 0) {
+      dispatch(
+        playFavouriteItems({ length: library.length }),
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (playlistIndex.length > 0)
+      dispatch(
+        getAudioDetails(
+          library[playlistIndex[currentIndex ?? 0]].videoId,
+        ),
+      );
+  }, [currentIndex, dispatch, library, playlistIndex]);
 
   return (
     <section className="main-section">
@@ -51,7 +80,9 @@ const Library = () => {
         )}
       </div>
 
-      {library.length > 1 ? <PlayAllButton /> : null}
+      {library.length > 1 ? (
+        <PlayAllButton onClick={playLibrary} />
+      ) : null}
     </section>
   );
 };

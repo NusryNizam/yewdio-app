@@ -148,6 +148,22 @@ const dataSlice = createSlice({
         state.currentPlaylistLength = favCount;
       }
     },
+    playLibraryItems: (
+      state,
+      action: PayloadAction<{ length: number }>,
+    ) => {
+      const libCount = action.payload.length;
+      if (libCount > 0) {
+        let indexes = [];
+        for (let i = 0; i < libCount; i++) {
+          indexes.push(i);
+        }
+        state.playlistIndex = shuffleArray(indexes);
+        state.currentIndex = 0;
+        state.isPlayingPlaylist = true;
+        state.currentPlaylistLength = libCount;
+      }
+    },
     playNextSong: (state) => {
       if (
         state.currentPlaylistLength &&
