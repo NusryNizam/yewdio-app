@@ -39,12 +39,20 @@ body {
       font-size: 11px;
       font-weight: 400;
       text-transform: uppercase;
+
+      @media (max-width: $sm) {
+        font-size: 9px;
+      }
     }
 
     &-md {
       font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
+
+      @media (max-width: $sm) {
+        font-size: 9px;
+      }
     }
   }
 
@@ -52,62 +60,111 @@ body {
     &-rg {
       font-size: 16px;
       font-weight: 400;
+
+      @media (max-width: $sm) {
+        font-size: 14px;
+      }
     }
 
     &-md {
       font-size: 16px;
       font-weight: 500;
+
+      @media (max-width: $sm) {
+        font-size: 14px;
+      }
     }
 
     &-sm-rg {
       font-size: 13px;
       font-weight: 400;
+
+      @media (max-width: $sm) {
+        font-size: 11px;
+      }
     }
 
     &-sm-md {
       font-size: 13px;
       font-weight: 500;
+
+      @media (max-width: $sm) {
+        font-size: 11px;
+      }
     }
 
     &-lg-rg {
       font-size: 19px;
       font-weight: 400;
+
+      @media (max-width: $sm) {
+        font-size: 16px;
+      }
     }
 
     &-lg-md {
       font-size: 19px;
       font-weight: 500;
+
+      @media (max-width: $sm) {
+        font-size: 16px;
+      }
     }
   }
 
   &-h1 {
     font-size: 33px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 28px;
+    }
   }
 
   &-h2 {
     font-size: 28px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 22px;
+    }
   }
 
   &-h3 {
     font-size: 23px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 
   &-display1 {
     font-size: 57px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 48px;
+    }
   }
 
   &-display2 {
     font-size: 48px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 36px;
+    }
   }
 
   &-display3 {
     font-size: 40px;
     font-weight: 700;
+
+    @media (max-width: $sm) {
+      font-size: 32px;
+    }
   }
 }
 

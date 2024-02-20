@@ -19,7 +19,6 @@ import {
   getAudioDetails,
   playFavouriteItems,
 } from "@/lib/dataSlice";
-import { useEffect } from "react";
 import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 
 const Library = () => {
@@ -36,16 +35,14 @@ const Library = () => {
         playFavouriteItems({ length: library.length }),
       );
     }
-  };
 
-  useEffect(() => {
     if (playlistIndex.length > 0)
       dispatch(
         getAudioDetails(
           library[playlistIndex[currentIndex ?? 0]].videoId,
         ),
       );
-  }, [currentIndex, dispatch, library, playlistIndex]);
+  };
 
   return (
     <section className="main-section">

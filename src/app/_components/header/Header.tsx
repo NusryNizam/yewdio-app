@@ -67,7 +67,7 @@ const Header = ({ heading }: HeaderProps) => {
 
   return (
     <div className="header">
-      <h1 className={`${dmSans.className} heading font-h3`}>
+      <h1 className={`${dmSans.className} heading font-h2`}>
         {heading}
       </h1>
       <div className="search-input-container">

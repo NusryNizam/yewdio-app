@@ -20,6 +20,10 @@
     background-color: #22222298;
     overflow: hidden;
     pointer-events: none;
+
+    @media (max-width: $sm) {
+      height: 0;
+    }
   }
 
   @media (max-width: $md) {
@@ -31,6 +35,14 @@
       height: 160px;
       right: -$spacing-05;
       left: -$spacing-05;
+    }
+  }
+
+  @media (max-width: $sm) {
+    margin-bottom: 0px;
+
+    &::after {
+      height: 133px;
     }
   }
 
@@ -46,14 +58,7 @@
 }
 
 .heading {
-  font-size: 33px;
-  font-weight: 700;
   padding-right: $spacing-05;
-
-  @media (max-width: $md) {
-    font-size: 28px;
-    font-weight: 700;
-  }
 }
 
 .search-input-container {

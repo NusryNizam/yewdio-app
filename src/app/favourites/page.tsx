@@ -16,11 +16,9 @@ import {
   THUMBNAIL_QUALITY,
 } from "@/types/api.types";
 import { CARD_VARIANT } from "@/types/data.types";
-import { useEffect } from "react";
 import Header from "../_components/header/Header";
 import PlayAllButton from "../_components/play-all-button/PlayAllButton";
 import ResultsCard from "../_components/results-card/ResultsCard";
-
 
 const Favourites = () => {
   const { playAudio } = useFetchDetails();
@@ -38,9 +36,7 @@ const Favourites = () => {
         playFavouriteItems({ length: favourites.length }),
       );
     }
-  };
 
-  useEffect(() => {
     if (playlistIndex.length > 0)
       dispatch(
         getAudioDetails(
@@ -48,7 +44,7 @@ const Favourites = () => {
             .videoId,
         ),
       );
-  }, [currentIndex, dispatch, favourites, playlistIndex]);
+  };
 
   return (
     <section className="main-section">

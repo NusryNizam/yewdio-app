@@ -297,7 +297,9 @@ const ResultsCard = ({
         ) : (
           <div>Audio Title</div>
         )}
-        <div className="result-author">{author}</div>
+        <div className="result-author font-body-rg">
+          {author}
+        </div>
         <div className="duration font-body-sm-rg">
           {secondsToHMS(duration)}
         </div>
